@@ -2,7 +2,7 @@
 
 ## Authors
 
-* **Name** - *Role*
+* **Johan Alejandro Holguín Arango** - *Not sure yet*
 
 
 
