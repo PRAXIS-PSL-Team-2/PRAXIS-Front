@@ -2,7 +2,7 @@
 
 ## Authors
 
-* **Name** - *Role*
+* **Juan David Fernandez Moreno** - *Not sure yet*
 
 
 
