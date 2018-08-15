@@ -2,7 +2,8 @@
 
 ## Authors
 
-* **Johan Alejandro Holguín Arango** - *Not sure yet*
-
+* **Juan David Fernandez Moreno** - *Not sure yet*
+* **Rafael Enrique Jiménez Cabrera** 
+* **Johan Alejandro Holguin Arango** 
 
 
