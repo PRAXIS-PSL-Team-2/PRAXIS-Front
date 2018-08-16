@@ -6,4 +6,5 @@
 * **Rafael Enrique Jiménez Cabrera** 
 * **Johan Alejandro Holguin Arango** 
 * **Christian Camilo Guzmán Escobar** 
-* **Santiago Cadavid Gutiérrez**
+* **Santiago Cadavid Gutiérrez** 
+* **José Daniel Posada Montoya**
