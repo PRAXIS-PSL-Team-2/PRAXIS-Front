@@ -6,3 +6,4 @@
 * **Rafael Enrique Jiménez Cabrera**
 * **Christian Camilo Guzmán Escobar** 
 * **Santiago Cadavid Gutiérrez** 
+* **José Daniel Posada Montoya**
