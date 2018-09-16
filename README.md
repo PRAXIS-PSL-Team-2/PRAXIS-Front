@@ -2,7 +2,7 @@
 
 ## Authors
 
-* **Juan David Fernandez Moreno** - *Not sure yet*
+* **Juan David Fernandez Moreno** 
 * **Rafael Enrique Jiménez Cabrera** 
 * **Johan Alejandro Holguin Arango** 
 * **Christian Camilo Guzmán Escobar** 
