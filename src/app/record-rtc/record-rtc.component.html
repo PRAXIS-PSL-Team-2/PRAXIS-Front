@@ -1,0 +1,33 @@
+
+  <div class="row justify-content-center">
+    <div class="col ">
+      <video #video class="video my-0 py-0"></video>
+      <div class="row bg-dark rounded  my-0 py-0  ">
+          <div class="col">
+            <h4 class=" mt-2 ml-5 text-white">
+              Video Options
+            </h4>
+          </div>
+        <div class="col px-0">
+          <button class="btn bg-dark text-white "  title="Start/Restart Record" (click)="startRecording()">
+            <i class="fas fa-play-circle fa-2x"></i>
+          </button>
+        
+       
+          <button class="btn bg-dark text-white" title="Stop Record" (click)="stopRecording()">
+            <i class="fas fa-stop-circle fa-2x"></i>
+          </button>
+       
+        
+          <button class="btn bg-dark text-white" title="Download" (click)="download()">
+            <i class="fas fa-download fa-2x"></i>
+          </button>
+        </div>
+          
+        
+      </div>
+
+    </div>
+    
+  </div>
+

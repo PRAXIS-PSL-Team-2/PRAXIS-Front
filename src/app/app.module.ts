@@ -1,9 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import './polyfills';
-import {CdkTableModule} from '@angular/cdk/table';
-import {CdkTreeModule} from '@angular/cdk/tree';
 import {HttpClientModule} from '@angular/common/http';
-import {NgModule} from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -14,47 +11,13 @@ import { ContactComponent } from './contact/contact.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {
-  MatHorizontalStepper,
-  MatAutocompleteModule,
-  MatBadgeModule,
-  MatBottomSheetModule,
-  MatButtonModule,
-  MatButtonToggleModule,
-  MatCardModule,
-  MatCheckboxModule,
-  MatChipsModule,
-  MatDatepickerModule,
-  MatDialogModule,
-  MatDividerModule,
-  MatExpansionModule,
-  MatGridListModule,
-  MatIconModule,
-  MatInputModule,
-  MatListModule,
-  MatMenuModule,
-  MatNativeDateModule,
-  MatPaginatorModule,
-  MatProgressBarModule,
-  MatProgressSpinnerModule,
-  MatRadioModule,
-  MatRippleModule,
-  MatSelectModule,
-  MatSidenavModule,
-  MatSliderModule,
-  MatSlideToggleModule,
-  MatSnackBarModule,
-  MatSortModule,
-  MatStepperModule,
-  MatTableModule,
-  MatTabsModule,
-  MatToolbarModule,
-  MatTooltipModule,
-  MatTreeModule,
-} from '@angular/material';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
+import { MatStepperModule, MatInputModule, MatButtonModule } from '@angular/material';
+import { } from '@angular/animations';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { TestComponent } from './test/test.component';
+import { RecordRTCComponent } from './record-rtc/record-rtc.component';
 
 const appRoutes: Routes = [
    
@@ -63,6 +26,9 @@ const appRoutes: Routes = [
   { path: 'signIn', component: SignInComponent},
   { path: 'help', component: HelpComponent},
   { path: 'contact', component: ContactComponent},
+  { path: 'test', component: TestComponent},
+  { path: 'record', component: RecordRTCComponent},
+  
 ];
 
 
@@ -75,61 +41,25 @@ const appRoutes: Routes = [
     HelpComponent,
     ContactComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    TestComponent,
+    RecordRTCComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule, FormsModule, ReactiveFormsModule, 
+    MatStepperModule, MatInputModule, MatButtonModule,
     BrowserAnimationsModule,
-    FormsModule,
     HttpClientModule,
-    MatNativeDateModule,
-    ReactiveFormsModule,    
-    BrowserModule,
+    MDBBootstrapModule.forRoot(),
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
     ),
   ],
+  schemas: [ NO_ERRORS_SCHEMA ],
   providers: [],
-  exports: [
-    CdkTableModule,
-    CdkTreeModule,
-    MatAutocompleteModule,
-    MatBadgeModule,
-    MatBottomSheetModule,
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatChipsModule,
-    MatStepperModule,
-    MatDatepickerModule,
-    MatDialogModule,
-    MatDividerModule,
-    MatExpansionModule,
-    MatGridListModule,
-    MatIconModule,
-    MatInputModule,
-    MatListModule,
-    MatMenuModule,
-    MatNativeDateModule,
-    MatPaginatorModule,
-    MatProgressBarModule,
-    MatProgressSpinnerModule,
-    MatRadioModule,
-    MatRippleModule,
-    MatSelectModule,
-    MatSidenavModule,
-    MatSliderModule,
-    MatSlideToggleModule,
-    MatSnackBarModule,
-    MatSortModule,
-    MatTableModule,
-    MatTabsModule,
-    MatToolbarModule,
-    MatTooltipModule,
-    MatTreeModule,
-  ],  
+ 
+    
   bootstrap: [AppComponent]
 })
 export class AppModule { }
