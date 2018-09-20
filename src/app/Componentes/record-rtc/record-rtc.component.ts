@@ -83,6 +83,6 @@ export class RecordRTCComponent implements AfterViewInit{
   }
 
   download() {
-    this.recordRTC.save('video.webm');
+    this.recordRTC.save('video.mp4');
   }
 }

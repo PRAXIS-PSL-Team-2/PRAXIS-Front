@@ -8,7 +8,10 @@
       <a class="nav-link active" id="pills-information-tab" data-toggle="pill" href="#pills-information" role="tab"
         aria-controls="pills-information" aria-selected="true">Information</a>
     </li>
-
+    <li class="nav-item px-5">
+      <a class="nav-link" id="pills-account-tab" data-toggle="pill" href="#pills-account" role="tab" aria-controls="pills-account"
+        aria-selected="false">Account</a>
+    </li>
     <li class="nav-item px-5 ">
       <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile"
         aria-selected="false">Video </a>
@@ -95,6 +98,45 @@
       </button>
     </div>
   </div>
+  <div class="tab-pane fade" id="pills-account" role="tabpanel" aria-labelledby="pills-account-tab">
+    <div class="row justify-content-center">
+      <div class="col-5">
+        <div class="card px-2 py-2">
+          <div class="card-header">
+            Account Information
+          </div>
+          <div class="card-body py-1">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Username</label>
+              <input type="text" class="form-control" id="username" placeholder="Create your username">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Lastname</label>
+              <input type="password" class="form-control" id="password" placeholder="Create your password">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Lastname</label>
+                <input type="password" class="form-control" id="repassword" placeholder="Confirm your password">
+            </div>
+
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+    <div class="row mt-2 justify-content-center">
+      <button id="b2" type="button" class="btn  btn-secondary">
+        Back
+      </button>
+      <button id="n2" type="button" class="btn  btn-secondary">
+        Next
+      </button>
+
+    </div>
+  </div>
+
   <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
     <div class="row justify-content-center">
       <div class="col-6">
@@ -115,22 +157,22 @@
       </div>
     </div>
     <div class="row mt-2 justify-content-center">
-        <button id="b2" type="button" class="btn  btn-secondary">
-          Back
-        </button>
-        <button id="n2" type="button" class="btn  btn-secondary">
-          Next
-        </button>
+      <button id="b3" type="button" class="btn  btn-secondary">
+        Back
+      </button>
+      <button id="n3" type="button" class="btn  btn-secondary">
+        Next
+      </button>
 
-      </div>
+    </div>
   </div>
   <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-      <div class="row mt-2 justify-content-center">
-        <button id="b3" type="button" class="btn  btn-secondary">
-          Back
-        </button>
-      </div>
+    <div class="row mt-2 justify-content-center">
+      <button id="b4" type="button" class="btn  btn-secondary">
+        Back
+      </button>
     </div>
+  </div>
 
 
 

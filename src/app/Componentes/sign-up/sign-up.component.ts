@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 declare var jQuery: any;
 declare var $: any;
 
+
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -33,6 +34,12 @@ export class SignUpComponent implements OnInit {
     });
     jQuery('#b3').click(function () {
       $('#pills-tab li:nth-child(2) a').tab('show');
+    });
+    jQuery('#n3').click(function () {
+      $('#pills-tab li:nth-child(4) a').tab('show');
+    });
+    jQuery('#b4').click(function () {
+      $('#pills-tab li:nth-child(3) a').tab('show');
     });
 
     this.firstFormGroup = this._formBuilder.group({
