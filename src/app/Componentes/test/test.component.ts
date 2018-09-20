@@ -1,27 +1,37 @@
-import { Component } from '@angular/core';
-import {OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
-import { Button } from 'protractor';
-
-declare var jQuery : any;
-declare var $ : any;  
+import {Component, NgModule, ViewChild} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {FormControl, FormGroup, ReactiveFormsModule, FormsModule} from '@angular/forms';
+import {NgSelectModule, NgOption} from '@ng-select/ng-select';
 
 @Component({
-  selector: 'app-test',
-  templateUrl: './test.component.html',
-  styleUrls: ['./test.component.scss']
+    selector: 'app-test',
+    templateUrl: './test.component.html',
+    styleUrls: ['./test.component.scss'],
+        
+
 })
-export class TestComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-    jQuery('button').click(function(event){
-      $('#myTab li:nth-child(3) a').tab('show');
+export class TestComponent {
+    
      
-      });
-      
-       
-  }
-  }
+    cities = [
+        {id: 1, name: 'Universidad Nacional'},
+        {id: 2, name: 'EAFIT'},
+        {id: 3, name: 'Universidad de Antioquia'},
+        {id: 4, name: 'Universidad de Medellin' },
+        {id: 5, name:  'Universidad Pontificia Bolivariana'}
+    ];  
 
+    selectedCity: any;
+    selectedCityIds: string[];
+    selectedCityName = 'Vilnius';
+    selectedCityId: number;
 
+    
+    constructor() {
+        
+    }
+    
+   
+    
+
+}

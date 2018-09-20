@@ -18,7 +18,7 @@
     </li>
     <li class="nav-item px-5">
       <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact"
-        aria-selected="false">Done</a>
+        aria-selected="false">Submit</a>
     </li>
   </ul>
 </div>
@@ -32,16 +32,28 @@
           </div>
           <div class="card-body py-1">
             <div class="form-group">
-              <label for="exampleInputEmail1">Name</label>
-              <input type="text" class="form-control" id="name" placeholder="Enter your name">
+              <label for="namen">Name</label>
+              <input class="form-control" type="text" name="namen" id="namen" [(ngModel)]="namen" required>
+              <div *ngIf="length(namen,6,40 )" class="alert alert-danger">
+                <ul class="help-block ">
+                  <li *ngIf="length(namen,6,40 )">Name is required </li>
+                </ul>
+              </div>
             </div>
             <div class="form-group">
-              <label for="exampleInputEmail1">Lastname</label>
-              <input type="text" class="form-control" id="lastname" placeholder="Enter your lastname">
+              <label for="lastname">Lastname</label>
+              <input class="form-control" type="text" name="lastname" id="lastname" [(ngModel)]="lastname" required>
+              <div *ngIf="length(lastname,1,40 )" class="alert alert-danger">
+                <ul class="help-block ">
+                  <li *ngIf="length(lastname,1,40 )">Lastname is required</li>
+                </ul>
+              </div>
             </div>
             <div class="form-group">
-              <label for="exampleFormControlTextarea1">Small Self Description</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              <label for="selfDescription">Small Self Description</label>
+              <textarea class="form-control" id="selfDescription" name="selfDescription" [(ngModel)]="selfDescription"
+                placeholder="Tell us somethings about yourself" rows="3">
+                </textarea>
             </div>
 
           </div>
@@ -57,30 +69,43 @@
           </div>
           <div class="card-body py-1">
             <div class="form-group">
-              <label for="exampleInputEmail1">Email</label>
-              <input type="email" class="form-control" id="email" placeholder="Enter your email">
+              <label for="lastname">Email</label>
+              <input class="form-control" type="email" name="email" id="email" [(ngModel)]="email" required>
+              <div *ngIf="length(email,6,40) || validateEmail()" class="alert alert-danger">
+                <ul class="help-block">
+                  <li *ngIf="length(email,1,40)">Email is required</li>
+                  <li *ngIf="validateEmail()">Email format should be valid</li>
+                </ul>
+              </div>
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1">Phone</label>
-              <input type="text" class="form-control" id="phone" placeholder="Enter your phone">
+              <label for="phone">Phone</label>
+              <input type="number" class="form-control" name="phone" id="phone" [(ngModel)]="phone" required>
+              <div *ngIf="length(phone,6,40)" class="alert alert-danger">
+                <ul class="help-block">
+                  <li *ngIf="length(phone,1,12)">Phone is required</li>
+                  <li *ngIf="length(phone,1,12)">Phone format should be valid</li>
+                </ul>
+              </div>
             </div>
-            <div class="form-group ">
-              <label for="exampleFormControlSelect1">University</label>
-              <select class="form-control" id="exampleFormControlSelect1">
-                <option>UN</option>
-                <option>EAFIT</option>
-                <option>POLI</option>
-                <option>UDEA</option>
-              </select>
+            <div class="form-group">
+              <label>Universidad</label>
+              <ng-select [items]="universities" bindLabel="name" placeholder="Select University" [(ngModel)]="selectedUniviversity">
+              </ng-select>
+
             </div>
+
+
             <div class="form-group">
               <label for="exampleFormControlSelect1">PRAXIS modality</label><br>
               <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+                <input type="radio" id="customRadioInline1" value="firstjob" [(ngModel)]="praxisModality" name="customRadioInline1"
+                  class="custom-control-input">
                 <label class="custom-control-label" for="customRadioInline1">First Job</label>
               </div>
               <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                <input type="radio" id="customRadioInline2" value="intership" [(ngModel)]="praxisModality" name="customRadioInline1"
+                  class="custom-control-input">
                 <label class="custom-control-label" for="customRadioInline2">Intership</label>
               </div>
             </div>
@@ -105,20 +130,37 @@
           <div class="card-header">
             Account Information
           </div>
+
           <div class="card-body py-1">
             <div class="form-group">
-              <label for="exampleInputEmail1">Username</label>
-              <input type="text" class="form-control" id="username" placeholder="Create your username">
+              <label for="username">Username</label>
+              <input class="form-control" type="text" name="username" id="username" [(ngModel)]="username" required>
+              <div *ngIf="length(username,1,40 )" class="alert alert-danger">
+                <ul class="help-block ">
+                  <li *ngIf="length(username,1,40 )">Username is required</li>
+                </ul>
+              </div>
             </div>
             <div class="form-group">
-              <label for="exampleInputEmail1">Lastname</label>
-              <input type="password" class="form-control" id="password" placeholder="Create your password">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputEmail1">Lastname</label>
-                <input type="password" class="form-control" id="repassword" placeholder="Confirm your password">
+              <label for="password">Password</label>
+              <input class="form-control" type="text" name="password" id="password" [(ngModel)]="password" required>
+              <div *ngIf="length(password,6,16 ) || validateSpace(password)" class="alert alert-danger">
+                <ul class="help-block">
+                  <li *ngIf="length(password,6,16 ),">Password length should be betwen 6 and 16 characters</li>
+                  <li *ngIf="validateSpace(password)">Password can't contain spaces</li>
+                </ul>
+              </div>
             </div>
 
+            <div class="form-group">
+              <label for="name">Password</label>
+              <input type="password" class="form-control" id="repassword" required [(ngModel)]="repassword" name="repassword">
+              <div *ngIf="(password != repassword)||length(repassword,6,16 )" class="alert alert-danger">
+                <ul class="help-block">
+                  <li *ngIf="(password != repassword)">Passwords not match</li>
+                </ul>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -167,205 +209,59 @@
     </div>
   </div>
   <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+   
+      
+ <div class="row">
+            <div class="col-5">
+              <div class="card">
+                <div class="card-header">
+                  Personal Information
+                </div>
+                <div class="card-body">
+                  <label><b>Name: </b></label>{{namen}}<br>
+                  <label><b>Last Name: </b></label>{{lastname}}<br>
+                  <p><label><b>Self Description:</b></label>{{selfDescription}}</p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  Academic Information
+                </div>
+                <div class="card-body">
+                    <label><b>Email: </b></label>{{email}}<br>
+                    <label><b>Phone: </b></label>{{phone}}<br>
+                    <label><b>University: </b></label>{{selectedUniviversity.name}}<br>
+                    <label><b>PRAXIS modality: </b></label>{{praxisModality}}<br>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                      Account Information
+                    </div>
+                    <div class="card-body">
+                        <label><b>Username: </b></label>{{username}}<br>
+                        <label><b>Password: </b></label>■╬■■∟■■■☻♥☺☺<br>
+                    </div>
+                  </div>
+              <div class="card">
+                <div class="card-header">
+                  Your Video
+                </div>
+                <div class="card-body">
+                  
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+    
     <div class="row mt-2 justify-content-center">
       <button id="b4" type="button" class="btn  btn-secondary">
         Back
       </button>
     </div>
   </div>
-
-
-
 </div>
-
-
-<!--
-  <div class="row justify-content-center">
-  <div class="tab-content" id="pills-tabContent">
-    <div class="tab-pane fade show active" id="pills-information" role="tabpanel" aria-labelledby="pills-information-tab">
-
-      <div class="col-7 px-1  mx-0 my-0 py-0">
-        <div class="card px-2 py-2">
-          <div class="card-header">
-            Personal Information
-          </div>
-          <div class="card-body py-1">
-            <div class="form-group">
-              <label for="exampleInputEmail1">Name</label>
-              <input type="text" class="form-control" id="name" placeholder="Enter your name">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Lastname</label>
-              <input type="text" class="form-control" id="lastname" placeholder="Enter your lastname">
-            </div>
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1">Small Self Description</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-      <div class="col-7 px-1  mx-0 my-0 py-0">
-        <div class="card px-2 py-2">
-          <div class="card-header">
-            Academic Information
-          </div>
-          <div class="card-body py-1">
-            <div class="form-group">
-              <label for="exampleInputEmail1">Email</label>
-              <input type="email" class="form-control" id="email" placeholder="Enter your email">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Phone</label>
-              <input type="text" class="form-control" id="phone" placeholder="Enter your phone">
-            </div>
-            <div class="form-group ">
-              <label for="exampleFormControlSelect1">University</label>
-              <select class="form-control" id="exampleFormControlSelect1">
-                <option>UN</option>
-                <option>EAFIT</option>
-                <option>POLI</option>
-                <option>UDEA</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="exampleFormControlSelect1">PRAXIS modality</label><br>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
-                <label class="custom-control-label" for="customRadioInline1">First Job</label>
-              </div>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-                <label class="custom-control-label" for="customRadioInline2">Intership</label>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-    <div class="row mt-2 justify-content-center">
-
-      <button id="n1" type="button" class="btn  btn-secondary">
-        Next
-      </button>
-    </div>
-
-
-
-    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-      <div class="row mt-2 justify-content-center">
-        <record-rtc></record-rtc>
-      </div>
-      <div class="row mt-2 justify-content-center">
-        <button id="b2" type="button" class="btn  btn-secondary">
-          Back
-        </button>
-        <button id="n2" type="button" class="btn  btn-secondary">
-          Next
-        </button>
-
-      </div>
-    </div>
-    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-      <div class="row mt-2 justify-content-center">
-        <button id="b3" type="button" class="btn  btn-secondary">
-          Back
-        </button>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<div class="row justify-content-center">
-  <div class="col-9  ">
-    <div class="row mt-2 justify-content-center">
-      <h2>Create my Account</h2>
-    </div>
-    <div class="progress">
-      <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
-        aria-valuemax="100">25%</div>
-    </div>
-
-    <div class="row">
-      <div class="col-6 px-3  mx-0 my-0 py-1">
-        <div class="card px-2 py-2">
-          <div class="card-header">
-            Personal Information
-          </div>
-          <div class="card-body py-1">
-            <div class="form-group">
-              <label for="exampleInputEmail1">Name</label>
-              <input type="text" class="form-control" id="name" placeholder="Enter your name">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Lastname</label>
-              <input type="text" class="form-control" id="lastname" placeholder="Enter your lastname">
-            </div>
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1">Small Self Description</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-      <div class="col-6 px-3  mx-0 my-0 py-1">
-        <div class="card px-2 py-2">
-          <div class="card-header">
-            Academic Information
-          </div>
-          <div class="card-body py-1">
-            <div class="form-group">
-              <label for="exampleInputEmail1">Email</label>
-              <input type="email" class="form-control" id="email" placeholder="Enter your email">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Phone</label>
-              <input type="text" class="form-control" id="phone" placeholder="Enter your phone">
-            </div>
-            <div class="form-group ">
-              <label for="exampleFormControlSelect1">University</label>
-              <select class="form-control" id="exampleFormControlSelect1">
-                <option>UN</option>
-                <option>EAFIT</option>
-                <option>POLI</option>
-                <option>UDEA</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="exampleFormControlSelect1">PRAXIS modality</label><br>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
-                <label class="custom-control-label" for="customRadioInline1">First Job</label>
-              </div>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-                <label class="custom-control-label" for="customRadioInline2">Intership</label>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-      </div>
-
-
-    </div>
-    <div class="row mt-2 justify-content-center">
-      <button type="button" class="btn btn-lg btn-secondary">
-        Next
-      </button>
-    </div>
-
-  </div>
-</div>
--->

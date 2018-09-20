@@ -18,7 +18,7 @@ import { } from '@angular/animations';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { TestComponent } from './componentes/test/test.component';
 import { RecordRTCComponent } from './componentes/record-rtc/record-rtc.component';
-
+import { NgSelectModule } from '@ng-select/ng-select';
 const appRoutes: Routes = [
    
   { path: '', component: HomeComponent   },
@@ -46,6 +46,7 @@ const appRoutes: Routes = [
     RecordRTCComponent
   ],
   imports: [
+    NgSelectModule ,
     BrowserModule, FormsModule, ReactiveFormsModule, 
     MatStepperModule, MatInputModule, MatButtonModule,
     BrowserAnimationsModule,

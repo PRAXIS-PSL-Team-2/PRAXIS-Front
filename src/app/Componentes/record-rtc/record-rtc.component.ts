@@ -4,7 +4,7 @@ let RecordRTC = require('recordrtc/RecordRTC.min');
 @Component({
   selector: 'record-rtc',
   templateUrl: './record-rtc.component.html',
-  styleUrls: ['./record-rtc.component.css']
+  styleUrls: ['./record-rtc.component.scss']
 })
 export class RecordRTCComponent implements AfterViewInit{
 
@@ -38,8 +38,7 @@ export class RecordRTCComponent implements AfterViewInit{
       mimeType: 'video/webm', // or video/webm\;codecs=h264 or video/webm\;codecs=vp9
       audioBitsPerSecond: 128000,
       videoBitsPerSecond: 128000,
-      bitsPerSecond: 128000,// if this line is provided, skip above two
-      width:1200
+      bitsPerSecond: 128000 // if this line is provided, skip above two
     };
     this.stream = stream;
     this.recordRTC = RecordRTC(stream, options);
@@ -63,16 +62,15 @@ export class RecordRTCComponent implements AfterViewInit{
   }
 
   startRecording() {
-    var mediaConstraints = {
-
-      video: true,
-      audio: true,
-
+    let mediaConstraints = {
+      video:true, audio: true
     };
     navigator.mediaDevices
       .getUserMedia(mediaConstraints)
       .then(this.successCallback.bind(this), this.errorCallback.bind(this));
-}
+
+
+  }
 
   stopRecording() {
     let recordRTC = this.recordRTC;
@@ -83,6 +81,6 @@ export class RecordRTCComponent implements AfterViewInit{
   }
 
   download() {
-    this.recordRTC.save('video.mp4');
+    this.recordRTC.save('video.webm');
   }
 }
