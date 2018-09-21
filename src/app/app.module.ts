@@ -19,6 +19,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { TestComponent } from './componentes/test/test.component';
 import { RecordRTCComponent } from './componentes/record-rtc/record-rtc.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { UploadVideoService } from './services/upload-video.service';
 
 const appRoutes: Routes = [
    
@@ -60,7 +61,7 @@ const appRoutes: Routes = [
     ),
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [],
+  providers: [UploadVideoService],
  
     
   bootstrap: [AppComponent]
