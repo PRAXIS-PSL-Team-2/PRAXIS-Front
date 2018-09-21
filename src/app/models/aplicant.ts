@@ -5,7 +5,7 @@ export class Aplicant {
     lastName:string; 
     email:string;
     username:string;
-    password;  
+    password:string;  
     phone:string;   
     university:string;   
     goal:string;   

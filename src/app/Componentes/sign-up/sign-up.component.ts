@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
-
 import { Aplicant } from '../../models/aplicant';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgSelectModule, NgOption } from '@ng-select/ng-select';
+import {UsersService} from '../../services/users.service';
 declare var jQuery: any;
 declare var $: any;
 
@@ -14,7 +14,9 @@ declare var $: any;
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
+  constructor(private usersService:UsersService,private _formBuilder: FormBuilder ){
 
+  }
   universities = [
     {id: 1, name: 'Universidad Nacional'},
     {id: 2, name: 'EAFIT'},
@@ -24,7 +26,7 @@ export class SignUpComponent implements OnInit {
 ];  
 
 
-  selectedUniviversity:any; 
+  selectedUniviversity:any={id:0,name:''}; 
   namen: string = '';
   lastname: string = '';
   email: string = '';
@@ -38,18 +40,9 @@ export class SignUpComponent implements OnInit {
   secondFormGroup: FormGroup;
   submitted = false;
   rePassword;
-  model = new Aplicant();
+  model : Aplicant;
 
   addCustomUser = (term) => ({id: term, name: term});
-
-  constructor(private _formBuilder: FormBuilder) {
-
-
-  }
-
-  
-
-
   get diagnostic() {
     /*this.model.name=this.namen;
     this.model.lastName=this.lastname;
@@ -92,10 +85,43 @@ export class SignUpComponent implements OnInit {
       secondCtrl: ['', Validators.required]
     });
   }
-  onSubmit() { this.submitted = true; }
+  submit() { 
+    this.model=new Aplicant();
+    this.model.name=this.namen;
+    this.model.lastName=this.lastname;
+    this.model.email=this.email;
+    this.model.username=this.username;
+    this.model.password=this.password;  
+    this.model.phone=this.phone;   
+    this.model.university=this.selectedUniviversity;   
+    this.model.goal=this.praxisModality;
+    this.model.selfDescription=this.selfDescription;  
+    this.model.video='prueba'
+    console.log(this.model);
+    let test={
+      "username": "santimal2",
+      "password": "85956231",
+      "name": "santiago2",
+      "lastName": "cadavid2",
+      "email": "sa2nticada@hotmail.es",
+      "phone": "3024278101",
+      "university": "Unmed",
+      "goal": "intership",
+      "selfDescription": "holamndo",
+      "video": "unvideito"
+    }
+    this.usersService.newAplicant(test).subscribe(res=>console.log(res));
+
+  }
   showFormControls(form: any) {
     return form && form.controls['name'] &&
       form.controls['name'].value; // Dr. IQ
+  }
+  test(){
+    this.usersService.test().subscribe((res)=>{
+      console.log(res);
+    });
+
   }
 
   length(str: string, min: number, max: number) {

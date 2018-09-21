@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-let RecordRTC = require('recordrtc/RecordRTC.min');
-
+import * as RecordRTC from 'recordrtc';
 @Component({
   selector: 'record-rtc',
   templateUrl: './record-rtc.component.html',
@@ -10,6 +9,7 @@ export class RecordRTCComponent implements AfterViewInit{
 
   private stream: MediaStream;
   private recordRTC: any;
+  videotoup:any;
 
   @ViewChild('video') video;
 
@@ -73,14 +73,29 @@ export class RecordRTCComponent implements AfterViewInit{
   }
 
   stopRecording() {
+    
     let recordRTC = this.recordRTC;
     recordRTC.stopRecording(this.processVideo.bind(this));
+    
     let stream = this.stream;
     stream.getAudioTracks().forEach(track => track.stop());
     stream.getVideoTracks().forEach(track => track.stop());
   }
 
   download() {
+   
+    
+    let blob = this.recordRTC.getBlob();    
+    console.log(blob);
+    let fileObject = new File([blob], "video", {
+      type: 'video/webm'
+    });
+    
     this.recordRTC.save('video.webm');
   }
+
+  
+
+
 }
+  
