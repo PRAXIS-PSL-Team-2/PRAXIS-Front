@@ -1,10 +1,10 @@
+import { UploadVideoService } from './../../services/upload-video.service';
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Aplicant } from '../../models/aplicant';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgSelectModule, NgOption } from '@ng-select/ng-select';
 import { UsersService } from '../../services/users.service';
-import { UploadVideoService } from '../../services/upload-video.service'
 declare var jQuery: any;
 declare var $: any;
 
@@ -32,6 +32,7 @@ export class SignUpComponent implements OnInit {
   ];
 
 
+  res: boolean;
   selectedUniviversity: any = { id: 0, name: '' };
   namen: string = '';
   lastname: string = '';
@@ -49,20 +50,7 @@ export class SignUpComponent implements OnInit {
   model: Aplicant;
 
   addCustomUser = (term) => ({ id: term, name: term });
-  get diagnostic() {
-    /*this.model.name=this.namen;
-    this.model.lastName=this.lastname;
-    this.model.email=this.email;
-    this.model.username=this.username;
-    this.model.password=this.password;  
-    this.model.phone=this.phone;   
-    this.model.university=this.university;   
-    this.model.goal=this.praxisModaliy;   
-    this.model.selfDescription=this.selfDescription;  */
-
-
-    return JSON.stringify(this.model);
-  }
+  
   ngOnInit() {
     this.upload = false;
     //jquerys
@@ -94,29 +82,50 @@ export class SignUpComponent implements OnInit {
   }
   submit2() {
     this.upload = true;
-    this.uploadVideoService.uploadfile(this.files); 
+
+    this.uploadVideoService.uploadfile(this.files);
     const progressInterval = setInterval(() => {
-    this.progress = this.uploadVideoService.getProgress();
-    
- 
-      if(this.progress == 100) {
+      this.progress = this.uploadVideoService.getProgress();
+      if (this.progress == 100) {
         clearInterval(progressInterval);
       }
     }, 100);
+
+
+    this.registerAplicant()
+
+  }
+  registerAplicant() {
+    this.model=new Aplicant();
+    this.model.video = this.uploadVideoService.getKey();
+    this.model.name = this.namen;
+    this.model.lastName = this.lastname;
+    this.model.email = this.email;
+    this.model.username = this.username;
+    this.model.password = this.password;
+    this.model.phone = this.phone;
+    this.model.university = this.selectedUniviversity.name;
+    this.model.goal = this.praxisModality;
+    this.model.selfDescription = this.selfDescription;
+    console.log(this.model)
+    this.usersService.newAplicant(this.model).subscribe(res=>console.log(res));
+    
+
   }
   showFormControls(form: any) {
     return form && form.controls['name'] &&
       form.controls['name'].value; // Dr. IQ
   }
   submit() {
+    this.progress = 0;
     this.video = this.uploadVideoService.getVideo();
-    this.files = new File([this.video], this.username+String(".mp4"), {
+    this.files = new File([this.video], this.username + String(".mp4"), {
       type: 'video/mp4'
     });
-    console.log(this.files); 
-    
-    
-}
+    console.log(this.files);
+
+
+  }
 
   length(str: string, min: number, max: number) {
     if (str.length < min || str.length > max) {

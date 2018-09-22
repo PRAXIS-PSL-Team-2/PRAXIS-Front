@@ -24,11 +24,9 @@ export class TestComponent implements OnInit {
     const result = this.uploadService.uploadfile(file);
 
     const progressInterval = setInterval(() => {
-      this.progress = this.uploadService.getProgress();
+      this.progress = this.uploadService.getProgress(); 
 
-    
 
- master
 
       if(this.progress == 100) {
         clearInterval(progressInterval);
@@ -40,7 +38,7 @@ export class TestComponent implements OnInit {
   }
 
   getFileUrl(key:String){
-    return this.uploadService.getFileUrl(key);
+    //return this.uploadService.getFileUrl(key);
   }
  
   selectFile(event) {
