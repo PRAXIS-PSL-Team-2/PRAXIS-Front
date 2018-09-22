@@ -3,8 +3,8 @@ import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Aplicant } from '../../models/aplicant';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgSelectModule, NgOption } from '@ng-select/ng-select';
-import {UsersService} from '../../services/users.service';
-import {UploadVideoService} from '../../services/upload-video.service'
+import { UsersService } from '../../services/users.service';
+import { UploadVideoService } from '../../services/upload-video.service'
 declare var jQuery: any;
 declare var $: any;
 
@@ -15,20 +15,24 @@ declare var $: any;
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
-  video:File;
-  constructor(private usersService:UsersService,private _formBuilder: FormBuilder,private uploadVideoService:UploadVideoService ){
+  upload: boolean;
+  disabled = true;
+  progress: Number = 0;
+  video: File;
+  files: File
+  constructor(private usersService: UsersService, private _formBuilder: FormBuilder, private uploadVideoService: UploadVideoService) {
 
-  } 
+  }
   universities = [
-    {id: 1, name: 'Universidad Nacional'},
-    {id: 2, name: 'EAFIT'},
-    {id: 3, name: 'Universidad de Antioquia'},
-    {id: 4, name: 'Universidad de Medellin' },
-    {id: 5, name:  'Universidad Pontificia Bolivariana'}
-];  
+    { id: 1, name: 'Universidad Nacional' },
+    { id: 2, name: 'EAFIT' },
+    { id: 3, name: 'Universidad de Antioquia' },
+    { id: 4, name: 'Universidad de Medellin' },
+    { id: 5, name: 'Universidad Pontificia Bolivariana' }
+  ];
 
 
-  selectedUniviversity:any={id:0,name:''}; 
+  selectedUniviversity: any = { id: 0, name: '' };
   namen: string = '';
   lastname: string = '';
   email: string = '';
@@ -37,14 +41,14 @@ export class SignUpComponent implements OnInit {
   praxisModality: string = 'firstjob';
   selfDescription: string = '';
   username: string = '';
-  password: string = '';    
+  password: string = '';
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   submitted = false;
   rePassword;
-  model : Aplicant;
+  model: Aplicant;
 
-  addCustomUser = (term) => ({id: term, name: term});
+  addCustomUser = (term) => ({ id: term, name: term });
   get diagnostic() {
     /*this.model.name=this.namen;
     this.model.lastName=this.lastname;
@@ -60,6 +64,7 @@ export class SignUpComponent implements OnInit {
     return JSON.stringify(this.model);
   }
   ngOnInit() {
+    this.upload = false;
     //jquerys
     jQuery('#n1').click(function () {
       $('#pills-tab li:nth-child(2) a').tab('show');
@@ -87,45 +92,31 @@ export class SignUpComponent implements OnInit {
       secondCtrl: ['', Validators.required]
     });
   }
-  submit() { 
-    this.model=new Aplicant();
-    this.model.name=this.namen;
-    this.model.lastName=this.lastname;
-    this.model.email=this.email;
-    this.model.username=this.username;
-    this.model.password=this.password;  
-    this.model.phone=this.phone;   
-    this.model.university=this.selectedUniviversity;   
-    this.model.goal=this.praxisModality;
-    this.model.selfDescription=this.selfDescription;  
-    this.model.video='prueba'
-    console.log(this.model);
-    let test={
-      "username": "santimal2",
-      "password": "85956231",
-      "name": "santiago2",
-      "lastName": "cadavid2",
-      "email": "sa2nticada@hotmail.es",
-      "phone": "3024278101",
-      "university": "Unmed",
-      "goal": "intership",
-      "selfDescription": "holamndo",
-      "video": "unvideito"
-    }
-    this.usersService.newAplicant(test).subscribe(res=>console.log(res));
-
+  submit2() {
+    this.upload = true;
+    this.uploadVideoService.uploadfile(this.files); 
+    const progressInterval = setInterval(() => {
+    this.progress = this.uploadVideoService.getProgress();
+    
+ 
+      if(this.progress == 100) {
+        clearInterval(progressInterval);
+      }
+    }, 100);
   }
   showFormControls(form: any) {
     return form && form.controls['name'] &&
       form.controls['name'].value; // Dr. IQ
   }
-  test(){
-    console.log('here');
-    this.video=this.uploadVideoService.getVideo();
-    if(this.video!=null){
-      this.uploadVideoService.uploadfile(this.video);
-    }
-  }
+  submit() {
+    this.video = this.uploadVideoService.getVideo();
+    this.files = new File([this.video], this.username+String(".mp4"), {
+      type: 'video/mp4'
+    });
+    console.log(this.files); 
+    
+    
+}
 
   length(str: string, min: number, max: number) {
     if (str.length < min || str.length > max) {

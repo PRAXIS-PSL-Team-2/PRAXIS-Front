@@ -67,9 +67,12 @@ h1 {
     font-family: Arial, Helvetica, sans-serif;
   }
   
+  #submit-Alert{
+    font-size:10px;
+  }
   .alert{
     
-      font-size:small;
+      
       margin: 0;
       padding: 0;
   }
@@ -82,3 +85,6 @@ h1 {
     padding: 1;
   }
 
+  .card-header{
+    padding: 1%;
+  }
