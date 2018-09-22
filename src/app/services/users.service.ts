@@ -17,7 +17,7 @@ export class UsersService {
   constructor(private http:HttpClient) { }
   newAplicant(aplicant){
     console.log(JSON.stringify(aplicant));
-    return this.http.post('https://praxis-api-develop.herokuapp.com/api/v1/students',JSON.stringify(aplicant) ,this.httpOptions);
+    return this.http.post('https://praxis-api-develop.herokuapp.com/api/v1/students',aplicant ,this.httpOptions);
   }
   test(){
     return this.http.get('https://praxis-api-develop.herokuapp.com/api/v1/students',this.httpOptions);
