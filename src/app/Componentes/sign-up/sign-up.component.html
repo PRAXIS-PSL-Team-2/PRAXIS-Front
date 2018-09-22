@@ -228,7 +228,21 @@
               Video Requierements
             </div>
             <div class="card-body">
-              ■ Video de menos de 2 minutos ■ Expectativas sobre el Praxis ■ Que puede aportar al Praxis
+              <div class="table mx-0 px-0 py-0 px-0">
+                <tr>
+                  <td>
+                      ■ Video de menos de 2 minutos
+                  </td>
+                  <td>
+                      ■ Expectativas sobre el Praxis
+                  </td>
+                </tr>
+                <tr>
+                   <td> ■ Que puede aportar al Praxis</td>
+                   <td> ■ otro item</td>
+                </tr>
+              </div>
+              
             </div>
           </div>
         </div>
@@ -275,7 +289,7 @@
 
       
 
-      <button type="button" (click)="submit()" class="btn btn-primary bg-primary text-white" [disabled]="(password != repassword)||length(namen,6,40 )||length(lastname,6,40 )
+      <button type="button" (click)="submit()" class="btn btn-primary  bg-primary text-white" [disabled]="(password != repassword)||length(namen,6,40 )||length(lastname,6,40 )
        ||length(email,1,40)||
        validateEmail()||
        length(phone,1,12)||

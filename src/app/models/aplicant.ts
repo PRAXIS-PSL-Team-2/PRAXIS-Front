@@ -1,5 +1,4 @@
 export class Aplicant {
-
     _id:number;
     name:string;
     lastName:string; 
