@@ -25,8 +25,7 @@ export class TestComponent implements OnInit {
 
     const progressInterval = setInterval(() => {
       this.progress = this.uploadService.getProgress();
-      console.log("Subiendo");
-
+    
 
       if(this.progress == 100) {
         clearInterval(progressInterval);

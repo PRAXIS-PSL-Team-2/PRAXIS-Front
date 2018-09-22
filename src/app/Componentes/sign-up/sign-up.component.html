@@ -6,19 +6,16 @@
   <ul class="nav nav-pills my-1 " id="pills-tab" role="tablist">
     <li class="nav-item px-5">
       <a class="nav-link active" id="pills-information-tab" data-toggle="pill" href="#pills-information" role="tab"
-        aria-controls="pills-information" aria-selected="true">Information</a>
+        aria-controls="pills-information" aria-selected="true">Basic Information</a>
     </li>
     <li class="nav-item px-5">
       <a class="nav-link" id="pills-account-tab" data-toggle="pill" href="#pills-account" role="tab" aria-controls="pills-account"
-        aria-selected="false">Account</a>
+        aria-selected="false">Account Information</a>
     </li>
-    <li class="nav-item px-5 ">
-      <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile"
-        aria-selected="false">Video </a>
-    </li>
+
     <li class="nav-item px-5">
       <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact"
-        aria-selected="false">Submit</a>
+        aria-selected="false">Video and Submit</a>
     </li>
   </ul>
 </div>
@@ -179,92 +176,138 @@
     </div>
   </div>
 
-  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-    <div class="row justify-content-center">
-      <div class="col-6">
-        <record-rtc></record-rtc>
+  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+
+
+    <div class="row">
+      <div class="col-4">
+        <div class="card">
+          <div class="card-header">
+            Personal Information
+          </div>
+          <div class="card-body">
+            <label><b>Name: </b></label>{{namen}}<br>
+            <label><b>Last Name: </b></label>{{lastname}}<br>
+            <p><label><b>Self Description:</b></label>{{selfDescription}}</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            Academic Information
+          </div>
+          <div class="card-body">
+            <label><b>Email: </b></label>{{email}}<br>
+            <label><b>Phone: </b></label>{{phone}}<br>
+            <label><b>University: </b></label>{{selectedUniviversity.name}}<br>
+            <label><b>PRAXIS modality: </b></label>{{praxisModality}}<br>
+          </div>
+        </div>
+
+
+        <div class="card">
+          <div class="card-header">
+            <b>Username </b> <br>
+          </div>
+          <div class="card-body">
+            {{username}}
+          </div>
+        </div>
+
+
       </div>
-      <div class="col-3">
-        <h5>
-          Video content
-        </h5>
-        <ul>
-          <li>
-            Presentation
-          </li>
-          <li>
-            Expectations
-          </li>
-        </ul>
+      <div class="col-8">
+
+        <div class="row justify-content-center">
+
+          <record-rtc></record-rtc>
+
+        </div>
+        <div class="row">
+          <div class="card">
+            <div class="card-header">
+              Video Requierements
+            </div>
+            <div class="card-body">
+              ■ Video de menos de 2 minutos ■ Expectativas sobre el Praxis ■ Que puede aportar al Praxis
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
+    <div *ngIf="(password != repassword)||length(namen,6,40 )||length(lastname,6,40 )||length(email,1,40)||
+      validateEmail()||length(phone,1,12)||length(phone,6,15)||length(username,1,40 )||length(password,6,16 )||
+      validateSpace(password)"
+        class="alert alert-danger" id="submit-Alert">
+        <h6>Problems in your register form</h6>
+        <ul class="help-block" >
+          <li *ngIf="length(namen,6,40 )||length(lastname,6,40 )||length(email,1,40)||
+            validateEmail()||length(phone,1,12)||length(phone,6,15)"><h6>Check
+            your Basic information</h6></li>
+          <li *ngIf="(password != repassword)||length(username,1,40 )||length(password,6,16 )||
+            validateSpace(password)"><h6>Check your Account information</h6>
+            </li>
+        </ul>
+      </div>
+
+      <div *ngIf="upload" class="div">
+        <div class="row">
+          <div class="col-4">
+            <div class="card   bg-dark">
+              <div class="card-header bg-dark text-white text-center ">
+                Uploading Information
+              </div>
+            </div>
+          </div>
+          <div class="col-8">
+              <div class="progress " style="height: 30px;">
+                  <div class="progress-bar   " role="progressbar" [style.width]="progress+'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><h4>{{progress}}%</h4></div>
+                </div>
+          </div>
+        </div>
+         
+      </div>
+
     <div class="row mt-2 justify-content-center">
       <button id="b3" type="button" class="btn  btn-secondary">
         Back
       </button>
-      <button id="n3" type="button" class="btn  btn-secondary">
-        Next
-      </button>
 
-    </div>
-  </div>
-  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-   
       
- <div class="row">
-            <div class="col-5">
-              <div class="card">
-                <div class="card-header">
-                  Personal Information
-                </div>
-                <div class="card-body">
-                  <label><b>Name: </b></label>{{namen}}<br>
-                  <label><b>Last Name: </b></label>{{lastname}}<br>
-                  <p><label><b>Self Description:</b></label>{{selfDescription}}</p>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header">
-                  Academic Information
-                </div>
-                <div class="card-body">
-                    <label><b>Email: </b></label>{{email}}<br>
-                    <label><b>Phone: </b></label>{{phone}}<br>
-                    <label><b>University: </b></label>{{selectedUniviversity.name}}<br>
-                    <label><b>PRAXIS modality: </b></label>{{praxisModality}}<br>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                    <div class="card-header">
-                      Account Information
-                    </div>
-                    <div class="card-body">
-                        <label><b>Username: </b></label>{{username}}<br>
-                        <label><b>Password: </b></label>■╬■■∟■■■☻♥☺☺<br>
-                    </div>
-                  </div>
-              <div class="card">
-                <div class="card-header">
-                  Your Video
-                </div>
-                <div class="card-body">
-                  
-                </div>
-              </div>
 
-            </div>
-          </div>
-
-    
-    <div class="row mt-2 justify-content-center">
-      <button id="b4" type="button" class="btn  btn-secondary">
-        Back
-      </button>
-      <button id="sendInformation" (click)="test()" type="button" class="btn btn-lg bg-primary text-white">
+      <button type="button" (click)="submit()" class="btn btn-primary bg-primary text-white" [disabled]="(password != repassword)||length(namen,6,40 )||length(lastname,6,40 )
+       ||length(email,1,40)||
+       validateEmail()||
+       length(phone,1,12)||
+       length(phone,6,15)||
+       length(username,1,40 )||
+       length(password,6,16 )||
+       validateSpace(password) "
+        data-toggle="modal" data-target="#exampleModal">
         Submit
       </button>
+    </div>
+  </div>
+</div>
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Register Confirm</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Toda tu informacion es correcta?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" (click)="submit2()" data-dismiss="modal" class="btn btn-primary bg-primary text-white ">Confirm Register</button>
+      </div>
     </div>
   </div>
 </div>

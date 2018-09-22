@@ -65,7 +65,7 @@ export class RecordRTCComponent implements AfterViewInit{
 
   startRecording() {
     let mediaConstraints = {
-      video: {
+      video: true/*{
         mandatory: {
             maxHeight: 720,
             maxWidth: 1280
@@ -77,7 +77,7 @@ export class RecordRTCComponent implements AfterViewInit{
             {minWidth: 1024},
             {minWidth: 1280}
         ]
-    }, audio: true
+    }*/, audio: true
     };
     navigator.mediaDevices
       .getUserMedia(mediaConstraints)
@@ -85,6 +85,7 @@ export class RecordRTCComponent implements AfterViewInit{
 
 
   }
+  
 
   stopRecording() {
     
@@ -99,7 +100,8 @@ export class RecordRTCComponent implements AfterViewInit{
     var url= window.URL.createObjectURL(blob);
     window.open(url);
     console.log(blob);
-    let fileObject = new File([blob], "video2.mp4", {
+    
+    let fileObject = new File([blob], "", {
       type: 'video/webm'
     });
    
