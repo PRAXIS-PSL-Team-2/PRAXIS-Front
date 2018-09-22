@@ -289,7 +289,7 @@
 
       
 
-      <button type="button" (click)="submit()" class="btn btn-primary  bg-primary text-white" [disabled]="(password != repassword)||length(namen,6,40 )||length(lastname,6,40 )
+      <button type="button" (click)="submit()" class="btn btn-primary  bg-primary text-white" [!disabled]="(password != repassword)||length(namen,6,40 )||length(lastname,6,40 )
        ||length(email,1,40)||
        validateEmail()||
        length(phone,1,12)||

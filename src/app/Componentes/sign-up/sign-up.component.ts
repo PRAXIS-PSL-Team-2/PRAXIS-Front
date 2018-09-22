@@ -96,8 +96,11 @@ export class SignUpComponent implements OnInit {
 
   }
   registerAplicant() {
+      let prekey=this.uploadVideoService.getKey();
+      let key=this.uploadVideoService.getFileUrl(prekey);
+    
     this.model=new Aplicant();
-    this.model.video = this.uploadVideoService.getKey();
+    this.model.video = key;
     this.model.name = this.namen;
     this.model.lastName = this.lastname;
     this.model.email = this.email;

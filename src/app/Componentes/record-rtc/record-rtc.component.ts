@@ -97,9 +97,9 @@ export class RecordRTCComponent implements AfterViewInit{
     stream.getVideoTracks().forEach(track => track.stop());
 
     let blob = this.recordRTC.getBlob();  
-    var url= window.URL.createObjectURL(blob);
+    /*var url= window.URL.createObjectURL(blob);
     window.open(url);
-    console.log(blob);
+    console.log(blob);*/ 
     
     let fileObject = new File([blob], "", {
       type: 'video/webm'
