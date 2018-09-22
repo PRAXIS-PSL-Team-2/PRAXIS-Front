@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Http, ResponseContentType } from '@angular/http';
 import * as RecordRTC from 'recordrtc';
+import {UploadVideoService} from '../../services/upload-video.service'
 @Component({
   selector: 'record-rtc',
   templateUrl: './record-rtc.component.html',
@@ -13,7 +15,7 @@ export class RecordRTCComponent implements AfterViewInit{
 
   @ViewChild('video') video;
 
-  constructor() {
+  constructor(private uploadService: UploadVideoService) {
     // Do stuff
   }
 
@@ -63,7 +65,19 @@ export class RecordRTCComponent implements AfterViewInit{
 
   startRecording() {
     let mediaConstraints = {
-      video:true, audio: true
+      video: {
+        mandatory: {
+            maxHeight: 720,
+            maxWidth: 1280
+        },
+        optional: [
+            {minWidth: 320},
+            {minWidth: 640},
+            {minWidth: 960},
+            {minWidth: 1024},
+            {minWidth: 1280}
+        ]
+    }, audio: true
     };
     navigator.mediaDevices
       .getUserMedia(mediaConstraints)
@@ -80,16 +94,25 @@ export class RecordRTCComponent implements AfterViewInit{
     let stream = this.stream;
     stream.getAudioTracks().forEach(track => track.stop());
     stream.getVideoTracks().forEach(track => track.stop());
+
+    let blob = this.recordRTC.getBlob();  
+    var url= window.URL.createObjectURL(blob);
+    window.open(url);
+    console.log(blob);
+    let fileObject = new File([blob], "video2.mp4", {
+      type: 'video/webm'
+    });
+   
+    
+    this.uploadService.setVideo(fileObject);
+    console.log(fileObject)
   }
 
   download() {
    
     
-    let blob = this.recordRTC.getBlob();    
-    console.log(blob);
-    let fileObject = new File([blob], "video", {
-      type: 'video/webm'
-    });
+    
+
     
     this.recordRTC.save('video.webm');
   }

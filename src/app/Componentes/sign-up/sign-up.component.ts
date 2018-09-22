@@ -4,6 +4,7 @@ import { Aplicant } from '../../models/aplicant';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgSelectModule, NgOption } from '@ng-select/ng-select';
 import {UsersService} from '../../services/users.service';
+import {UploadVideoService} from '../../services/upload-video.service'
 declare var jQuery: any;
 declare var $: any;
 
@@ -14,9 +15,10 @@ declare var $: any;
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
-  constructor(private usersService:UsersService,private _formBuilder: FormBuilder ){
+  video:File;
+  constructor(private usersService:UsersService,private _formBuilder: FormBuilder,private uploadVideoService:UploadVideoService ){
 
-  }
+  } 
   universities = [
     {id: 1, name: 'Universidad Nacional'},
     {id: 2, name: 'EAFIT'},
@@ -118,10 +120,11 @@ export class SignUpComponent implements OnInit {
       form.controls['name'].value; // Dr. IQ
   }
   test(){
-    this.usersService.test().subscribe((res)=>{
-      console.log(res);
-    });
-
+    console.log('here');
+    this.video=this.uploadVideoService.getVideo();
+    if(this.video!=null){
+      this.uploadVideoService.uploadfile(this.video);
+    }
   }
 
   length(str: string, min: number, max: number) {

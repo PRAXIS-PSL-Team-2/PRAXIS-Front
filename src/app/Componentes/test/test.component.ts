@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UploadVideoService } from '../../services/upload-video.service';
+import {UploadVideoService} from  '../../services/upload-video.service';
 
  
 @Component({
@@ -14,11 +14,11 @@ export class TestComponent implements OnInit {
   constructor(private uploadService: UploadVideoService) { }
  
   ngOnInit() {
-  }
+  } 
  
   upload() {
     const file = this.selectedFiles.item(0);
-    this.uploadService.uploadfile(file);
+    this.uploadService.uploadfile(file)
   }
  
   selectFile(event) {
