@@ -9,6 +9,14 @@ export class UploadVideoService {
   public video:File;
   public progress: Number = 0;
   FOLDER = 'presentation-videos/';
+
+  private bucket = new S3(
+    {
+      accessKeyId: 'AKIAIKSKLVQ4BMWCZPEA',
+      secretAccessKey: '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',
+      region: 'us-east-1'
+    }
+  );
  
   constructor() { }
   setVideo(file:File){
@@ -28,23 +36,14 @@ export class UploadVideoService {
 
   uploadfile(file) {
  
-    const bucket = new S3(
-      {
-        accessKeyId: 'AKIAIKSKLVQ4BMWCZPEA',
-        secretAccessKey: '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',
-        region: 'us-east-1'
-      }
-    );
- 
     const params = {
       Bucket: 'praxis-presentation-videos',
       Key: this.FOLDER + file.name,
       Body: file
     };
 
-    bucket.upload(params).on('httpUploadProgress', (evt) => {
+    this.bucket.upload(params).on('httpUploadProgress', (evt) => {
       this.setProgress((evt.loaded * 100) / evt.total);
-      console.log("Uploaded :: " + String(this.getProgress())+'%');
       }).send(function(err, data) {
         if (err) {
           console.log('There was an error uploading your file: ', err);
@@ -54,12 +53,18 @@ export class UploadVideoService {
           console.log('Successfully uploaded file.', data);
           return true;
         }
-
-        }
-      
-      );
- 
-    
+      });
   }
+
+  getFileUrl(key: String) {
  
+    const params = {
+      Bucket: 'praxis-presentation-videos',
+      Key: key,
+    };
+
+    var url = this.bucket.getSignedUrl('getObject', params);
+    
+    return url;
+  }
 }
