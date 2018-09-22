@@ -7,6 +7,7 @@ import * as S3 from 'aws-sdk/clients/s3';
 })
 export class UploadVideoService {
   public video:File;
+  public progress: Number = 0;
   FOLDER = 'presentation-videos/';
  
   constructor() { }
@@ -15,6 +16,14 @@ export class UploadVideoService {
   }
   getVideo(){
     return this.video;
+  }
+
+  getProgress(){
+    return this.progress;
+  }
+
+  setProgress(progress:Number){
+    this.progress = progress;
   }
 
   uploadfile(file) {
@@ -33,8 +42,9 @@ export class UploadVideoService {
       Body: file
     };
 
-    bucket.upload(params).on('httpUploadProgress', function(evt) {
-      alert("Uploaded :: " + String((evt.loaded * 100) / evt.total)+'%');
+    bucket.upload(params).on('httpUploadProgress', (evt) => {
+      this.setProgress((evt.loaded * 100) / evt.total);
+      console.log("Uploaded :: " + String(this.getProgress())+'%');
       }).send(function(err, data) {
         if (err) {
           console.log('There was an error uploading your file: ', err);

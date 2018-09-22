@@ -10,6 +10,7 @@ import {UploadVideoService} from  '../../services/upload-video.service';
 export class TestComponent implements OnInit {
  
   selectedFiles: FileList;
+  progress: Number = 0;
  
   constructor(private uploadService: UploadVideoService) { }
  
@@ -18,7 +19,22 @@ export class TestComponent implements OnInit {
  
   upload() {
     const file = this.selectedFiles.item(0);
-    this.uploadService.uploadfile(file)
+
+
+    const result = this.uploadService.uploadfile(file);
+
+    const progressInterval = setInterval(() => {
+      this.progress = this.uploadService.getProgress();
+      console.log("Subiendo");
+
+
+      if(this.progress == 100) {
+        clearInterval(progressInterval);
+      }
+    }, 100);
+
+    
+
   }
  
   selectFile(event) {
