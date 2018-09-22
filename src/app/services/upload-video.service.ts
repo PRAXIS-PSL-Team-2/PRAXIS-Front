@@ -27,15 +27,25 @@ export class UploadVideoService {
       Body: file
     };
  
+    // bucket.upload(params).on('httpUploadProgress', function(evt) {
+    //   console.log("Uploaded :: " + String((evt.loaded * 100) / evt.total)+'%');
+    //   }).send(function(err, data) {
+    //   alert("File uploaded successfully.");
+    //   });
+
     bucket.upload(params, function (err, data) {
       if (err) {
         console.log('There was an error uploading your file: ', err);
         return false;
       }
- 
+  
       console.log('Successfully uploaded file.', data);
       return true;
-    });
+    }).on('httpUploadProgress', function(evt) {
+      console.log("Uploaded :: " + String((evt.loaded * 100) / evt.total)+'%');
+      }).send(function(err, data) {
+      alert("File uploaded successfully.");
+      });;
   }
  
 }
