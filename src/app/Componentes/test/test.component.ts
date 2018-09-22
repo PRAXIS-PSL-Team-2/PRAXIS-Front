@@ -11,7 +11,7 @@ export class TestComponent implements OnInit {
  
   selectedFiles: FileList;
   progress: Number = 0;
- 
+
   constructor(private uploadService: UploadVideoService) { }
  
   ngOnInit() {
@@ -25,7 +25,10 @@ export class TestComponent implements OnInit {
 
     const progressInterval = setInterval(() => {
       this.progress = this.uploadService.getProgress();
+
     
+
+ master
 
       if(this.progress == 100) {
         clearInterval(progressInterval);
@@ -34,6 +37,10 @@ export class TestComponent implements OnInit {
 
     
 
+  }
+
+  getFileUrl(key:String){
+    return this.uploadService.getFileUrl(key);
   }
  
   selectFile(event) {

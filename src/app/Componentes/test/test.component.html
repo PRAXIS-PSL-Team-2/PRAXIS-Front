@@ -7,3 +7,10 @@
   <div class="progress">
     <div class="progress-bar" role="progressbar" [style.width]="progress+'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{progress}}</div>
   </div>
+
+  <audio controls [src]="getFileUrl('presentation-videos/Las Caleñas - Pastor López.mp3')">
+  </audio>
+
+  <video controls [src]="getFileUrl('presentation-videos/uribe.mp4')">
+  </video>
+ 
