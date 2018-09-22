@@ -38,7 +38,7 @@ export class TestComponent implements OnInit {
   }
 
   getFileUrl(key:String){
-    //return this.uploadService.getFileUrl(key);
+    return this.uploadService.getFileUrl(key);
   }
  
   selectFile(event) {
