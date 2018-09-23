@@ -15,6 +15,9 @@ declare var $: any;
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
+  c1: string = "nav-link bg-primary text-light";
+  c2: string = "nav-link bg-light";
+  c3: string = "nav-link bg-light";
   upload: boolean;
   disabled = true;
   progress: Number = 0;
@@ -24,16 +27,20 @@ export class SignUpComponent implements OnInit {
 
   }
   universities = [
-    { id: 1, name: 'Universidad Nacional' },
-    { id: 2, name: 'EAFIT' },
-    { id: 3, name: 'Universidad de Antioquia' },
-    { id: 4, name: 'Universidad de Medellin' },
-    { id: 5, name: 'Universidad Pontificia Bolivariana' }
+    'Universidad Nacional',
+    'EAFIT',
+    'Universidad de Antioquia',
+    'Universidad de Medellin',
+    'Universidad Pontificia Bolivariana'
   ];
 
-
+  a1: boolean;
+  a2: boolean;
+  a3: boolean;
+  section1: string = "0%";
+  section2: string = "0%";
   res: boolean;
-  selectedUniviversity: any = { id: 0, name: '' };
+  selectedUniviversity: string = "Universidad Nacional";
   namen: string = '';
   lastname: string = '';
   email: string = '';
@@ -50,21 +57,24 @@ export class SignUpComponent implements OnInit {
   model: Aplicant;
 
   addCustomUser = (term) => ({ id: term, name: term });
-  
+
   ngOnInit() {
+    this.a1 = true;
+    this.a2 = false;
+    this.a3 = false;
     this.upload = false;
     //jquerys
     jQuery('#n1').click(function () {
-      $('#pills-tab li:nth-child(2) a').tab('show');
+      $('#pills-tab li:nth-child(3) a').tab('show');
     });
     jQuery('#n2').click(function () {
-      $('#pills-tab li:nth-child(3) a').tab('show');
+      $('#pills-tab li:nth-child(5) a').tab('show');
     });
     jQuery('#b2').click(function () {
       $('#pills-tab li:nth-child(1) a').tab('show');
     });
     jQuery('#b3').click(function () {
-      $('#pills-tab li:nth-child(2) a').tab('show');
+      $('#pills-tab li:nth-child(3) a').tab('show');
     });
     jQuery('#n3').click(function () {
       $('#pills-tab li:nth-child(4) a').tab('show');
@@ -95,11 +105,13 @@ export class SignUpComponent implements OnInit {
     this.registerAplicant()
 
   }
+
+
   registerAplicant() {
-      let prekey=this.uploadVideoService.getKey();
-      let key=this.uploadVideoService.getFileUrl(prekey);
-    
-    this.model=new Aplicant();
+    let prekey = this.uploadVideoService.getKey();
+    let key = this.uploadVideoService.getFileUrl(prekey);
+
+    this.model = new Aplicant();
     this.model.video = key;
     this.model.name = this.namen;
     this.model.lastName = this.lastname;
@@ -107,13 +119,11 @@ export class SignUpComponent implements OnInit {
     this.model.username = this.username;
     this.model.password = this.password;
     this.model.phone = this.phone;
-    this.model.university = this.selectedUniviversity.name;
+    this.model.university = this.selectedUniviversity;
     this.model.goal = this.praxisModality;
     this.model.selfDescription = this.selfDescription;
     console.log(this.model)
-    this.usersService.newAplicant(this.model).subscribe(res=>console.log(res));
-    
-
+    this.usersService.newAplicant(this.model).subscribe(res => console.log(res));
   }
   showFormControls(form: any) {
     return form && form.controls['name'] &&
@@ -161,4 +171,59 @@ export class SignUpComponent implements OnInit {
     }
 
   }
+
+
+  s1n() {
+    this.section1 = "100%"
+    this.c1 = "nav-link bg-primary text-light";
+    this.c2 = "nav-link bg-primary text-light";
+    this.c3 = "nav-link bg-light";
+
+  }
+  s2n() {
+    this.c2 = "nav-link bg-primary text-light";
+    this.c3 = "nav-link bg-primary text-light";
+    this.section2 = "100%"
+  }
+  s2b() { 
+    this.section1 = "0%"
+    this.section2 = "0%"
+    this.c1 = "nav-link bg-primary text-light";
+    this.c2 = "nav-link bg-light";
+    this.c3 = "nav-link bg-light";
+  }
+  s3b() {
+    this.c3 = "nav-link bg-light";
+    this.c2 = "nav-link bg-primary text-light";
+    this.c1 = "nav-link bg-primary text-light";
+    this.section2 = "0%"
+    this.section1 = "100%"
+  }
+  funcion1() {
+    this.c1 = "nav-link bg-primary text-light";
+    this.c2 = "nav-link bg-light";
+    this.c3 = "nav-link bg-light";
+    this.section1 = "0%"
+    this.section2 = "0%"
+  }
+
+  funcion2() {
+    this.c1 = "nav-link bg-primary text-light";
+    this.c2 = "nav-link bg-primary text-light";
+    this.c3 = "nav-link bg-light";
+    this.section1 = "100%"
+    this.section2 = "0%"
+  }
+  funcion3() {
+    this.c2 = "nav-link bg-primary text-light";
+    this.c1 = "nav-link bg-primary text-light";
+    this.c3 = "nav-link bg-primary text-light";
+    this.section1 = "100%"
+    this.section2 = "100%"
+  }
+
+
+
+
+
 }

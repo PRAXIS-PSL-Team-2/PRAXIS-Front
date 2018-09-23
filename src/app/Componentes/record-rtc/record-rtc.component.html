@@ -1,32 +1,44 @@
+<div class="row  my-1 py-1 justify-content-center">
+  <div class="col ">
+    <video #video id="video1" class="video"></video>
+    <div class="row bg-dark rounded  my-0 py-0  ">
+      <div class="col-3 mx-auto my-auto">
+        <h4 class="text-white">
+          Options
+        </h4>
+      </div>
+      <div class="col px-2">
+        <button [class]="s2" title="Start/Restart Record" (click)="startRecording()">
+          <i class="fas fa-video fa-2x">
+            <h6>Record</h6>
+          </i>
+        </button>
 
-  <div class="row  my-1 py-1 justify-content-center">
-    <div class="col ">
-      <video #video id="video1" class="video"></video>
-      <div class="row bg-dark rounded  my-0 py-0  ">
-          <div class="col">
-            <h5 class=" mt-2 ml-5 text-white">
-             Record Your Video
-            </h5>
-          </div>
-        <div class="col px-0">
-          <button class="btn bg-dark text-white "  title="Start/Restart Record" (click)="startRecording()">
-            <i class="fas fa-play-circle fa-2x"></i>
-          </button>      
-       
-          <button class="btn bg-dark text-white" title="Stop Record" (click)="stopRecording()">
-            <i class="fas fa-stop-circle fa-2x"></i>
-          </button>
-       
-        
-          <button class="btn bg-dark text-white" title="Download" (click)="download()">
-            <i class="fas fa-download fa-2x"></i>
-          </button>
-        </div>
-          
-        
+
+        <button class="btn bg-dark text-white" title="Stop Record" (click)="stopRecording()">
+          <i class="fas fa-stop-circle fa-2x">
+            <h6>Stop</h6>
+          </i>
+        </button>
+
+        <button [class]="s1" title="aprove your video" (click)="machete()">
+          <i class="fas fa-check-circle fa-2x">
+            <h6>Aprove</h6>
+          </i>
+        </button>
+
+
+
+        <button class="btn bg-dark text-white" title="Download" (click)="download()">
+          <i class="fas fa-download fa-2x">
+            <h6>Download</h6>
+          </i>
+        </button>
       </div>
 
+
     </div>
-    
+
   </div>
 
+</div>
