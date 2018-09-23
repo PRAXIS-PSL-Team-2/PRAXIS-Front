@@ -1,10 +1,13 @@
 import { UploadVideoService } from './../../services/upload-video.service';
+import {GlobalErrorHandlerService} from "../../services/global-error-handler-service.service";
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Aplicant } from '../../models/aplicant';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgSelectModule, NgOption } from '@ng-select/ng-select';
 import { UsersService } from '../../services/users.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import {Response} from '../../models/response';
 declare var jQuery: any;
 declare var $: any;
 
@@ -15,6 +18,7 @@ declare var $: any;
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
+  marked = false;
   c1: string = "nav-link bg-primary text-light";
   c2: string = "nav-link bg-light";
   c3: string = "nav-link bg-light";
@@ -22,8 +26,8 @@ export class SignUpComponent implements OnInit {
   disabled = true;
   progress: Number = 0;
   video: File;
-  files: File
-  constructor(private usersService: UsersService, private _formBuilder: FormBuilder, private uploadVideoService: UploadVideoService) {
+  files: File;
+  constructor(private usersService: UsersService,private globalErrorHandlerService:GlobalErrorHandlerService, private _formBuilder: FormBuilder, private uploadVideoService: UploadVideoService) {
 
   }
   universities = [
@@ -91,18 +95,36 @@ export class SignUpComponent implements OnInit {
     });
   }
   submit2() {
-    this.upload = true;
 
-    this.uploadVideoService.uploadfile(this.files);
-    const progressInterval = setInterval(() => {
-      this.progress = this.uploadVideoService.getProgress();
-      if (this.progress == 100) {
-        clearInterval(progressInterval);
+    if (!this.videocheck()) {
+      this.upload = true;
+      this.uploadVideoService.uploadfile(this.files);
+      const progressInterval = setInterval(() => {
+        this.progress = this.uploadVideoService.getProgress();
+        if (this.progress == 100) {
+          clearInterval(progressInterval);
+        }
+      }, 100);
+      this.registerAplicant()
+
+    }
+
+
+  }
+  videocheck() {
+    this.video = this.uploadVideoService.getVideo();
+    if (this.video) {
+      if (this.uploadVideoService.aproved) {
+        return false;
       }
-    }, 100);
+      else {
+        return true;
+      }
+    }
 
-
-    this.registerAplicant()
+    else {
+      return true;
+    }
 
   }
 
@@ -123,7 +145,11 @@ export class SignUpComponent implements OnInit {
     this.model.goal = this.praxisModality;
     this.model.selfDescription = this.selfDescription;
     console.log(this.model)
-    this.usersService.newAplicant(this.model).subscribe(res => console.log(res));
+    this.usersService.newAplicant(this.model).subscribe((error)=>{
+      this.globalErrorHandlerService.handleError(error)
+    })
+    
+    
   }
   showFormControls(form: any) {
     return form && form.controls['name'] &&
@@ -185,7 +211,7 @@ export class SignUpComponent implements OnInit {
     this.c3 = "nav-link bg-primary text-light";
     this.section2 = "100%"
   }
-  s2b() { 
+  s2b() {
     this.section1 = "0%"
     this.section2 = "0%"
     this.c1 = "nav-link bg-primary text-light";
@@ -219,7 +245,10 @@ export class SignUpComponent implements OnInit {
     this.c1 = "nav-link bg-primary text-light";
     this.c3 = "nav-link bg-primary text-light";
     this.section1 = "100%"
-    this.section2 = "100%"
+    this.section2 = " 100%"
+  }
+  toggleVisibility(e) {
+    this.marked = e.target.checked;
   }
 
 
