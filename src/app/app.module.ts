@@ -24,11 +24,12 @@ import { UploadVideoService } from './services/upload-video.service';
 
 const appRoutes: Routes = [
    
-  { path: '**',redirectTo: '', component: HomeComponent ,pathMatch: 'full' },
+  { path: '', component: HomeComponent},
   { path: 'signUp', component: SignUpComponent},
   { path: 'signIn', component: SignInComponent},
   { path: 'help', component: HelpComponent},
   { path: 'contact', component: ContactComponent},
+  { path: '**', redirectTo: ''}  
   
 ];
 
