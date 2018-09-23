@@ -12,7 +12,8 @@ export class RecordRTCComponent implements AfterViewInit{
   private stream: MediaStream;
   private recordRTC: any;
   videotoup:any;
-
+  s1:string="btn bg-dark text-white";
+  s2:string="btn bg-dark text-white";
   @ViewChild('video') video;
 
   constructor(private uploadService: UploadVideoService) {
@@ -64,6 +65,8 @@ export class RecordRTCComponent implements AfterViewInit{
   }
 
   startRecording() {
+    this.s1="btn bg-dark text-white"
+    this.s2="btn bg-dark text-primary"
     let mediaConstraints = {
       video: true/*{
         mandatory: {
@@ -86,34 +89,37 @@ export class RecordRTCComponent implements AfterViewInit{
 
   }
   
-
+ 
+  machete(){
+    this.s1="btn bg-dark text-primary";
+    this.s2="btn bg-dark text-white"
+    this.stopRecording();
+  }
   stopRecording() {
-    
+    this.s2="btn bg-dark text-white"
     let recordRTC = this.recordRTC;
-    recordRTC.stopRecording(this.processVideo.bind(this));
-    
+    recordRTC.stopRecording(this.processVideo.bind(this));    
     let stream = this.stream;
     stream.getAudioTracks().forEach(track => track.stop());
     stream.getVideoTracks().forEach(track => track.stop());
 
     let blob = this.recordRTC.getBlob();  
-    var url= window.URL.createObjectURL(blob);
+    /*var url= window.URL.createObjectURL(blob);
     window.open(url);
-    console.log(blob);
-    
+    console.log(blob);*/     
     let fileObject = new File([blob], "", {
       type: 'video/webm'
     });
-   
-    
     this.uploadService.setVideo(fileObject);
     console.log(fileObject)
+
   }
 
-  download() {
-   
-    
-    
+  download() {    
+    this.stopRecording();
+    this.machete();
+    this.s1="btn bg-dark text-primary"
+    this.s2="btn bg-dark text-white"
 
     
     this.recordRTC.save('video.webm');
