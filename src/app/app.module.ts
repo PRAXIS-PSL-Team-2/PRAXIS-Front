@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
-import { NgModule, NO_ERRORS_SCHEMA,ErrorHandler } from '@angular/core';
-import {GlobalErrorHandlerService} from "./services/global-error-handler-service.service";
+import { NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './componentes/home/home.component';
@@ -62,8 +61,7 @@ const appRoutes: Routes = [
     ),
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [UploadVideoService,GlobalErrorHandlerService,
-    { provide: ErrorHandler, useClass: GlobalErrorHandlerService }],
+  providers: [UploadVideoService,],
  
     
   bootstrap: [AppComponent]
