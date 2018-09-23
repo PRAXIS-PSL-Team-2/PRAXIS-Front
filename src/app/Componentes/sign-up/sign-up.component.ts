@@ -1,5 +1,5 @@
+import { Respuesta } from '../../models/respuesta';
 import { UploadVideoService } from './../../services/upload-video.service';
-import {GlobalErrorHandlerService} from "../../services/global-error-handler-service.service";
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Aplicant } from '../../models/aplicant';
@@ -7,7 +7,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgSelectModule, NgOption } from '@ng-select/ng-select';
 import { UsersService } from '../../services/users.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import {Response} from '../../models/response';
+import { PraxisService } from '../../services/praxis.service';
+
+
 declare var jQuery: any;
 declare var $: any;
 
@@ -18,6 +20,13 @@ declare var $: any;
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
+  
+  constructor(private usersService: UsersService,private praxisService:PraxisService, private _formBuilder: FormBuilder, private uploadVideoService: UploadVideoService) {
+
+  }
+  usernameR:boolean=false;
+  emailR:boolean=false;
+  respuesta;
   marked = false;
   c1: string = "nav-link bg-primary text-light";
   c2: string = "nav-link bg-light";
@@ -27,24 +36,15 @@ export class SignUpComponent implements OnInit {
   progress: Number = 0;
   video: File;
   files: File;
-  constructor(private usersService: UsersService,private globalErrorHandlerService:GlobalErrorHandlerService, private _formBuilder: FormBuilder, private uploadVideoService: UploadVideoService) {
-
-  }
-  universities = [
-    'Universidad Nacional',
-    'EAFIT',
-    'Universidad de Antioquia',
-    'Universidad de Medellin',
-    'Universidad Pontificia Bolivariana'
-  ];
-
+  universities = [];
+  submitSucces:boolean;
   a1: boolean;
   a2: boolean;
   a3: boolean;
   section1: string = "0%";
   section2: string = "0%";
   res: boolean;
-  selectedUniviversity: string = "Universidad Nacional";
+  selectedUniviversity: string=''  ;
   namen: string = '';
   lastname: string = '';
   email: string = '';
@@ -60,9 +60,17 @@ export class SignUpComponent implements OnInit {
   rePassword;
   model: Aplicant;
 
+
   addCustomUser = (term) => ({ id: term, name: term });
 
   ngOnInit() {
+    
+    this.praxisService.getUniverties().subscribe((res:[string])=>{
+      this.universities=res;
+    })
+    
+    this.respuesta=new Respuesta(); 
+    this.respuesta.status=false;
     this.a1 = true;
     this.a2 = false;
     this.a3 = false;
@@ -85,6 +93,11 @@ export class SignUpComponent implements OnInit {
     });
     jQuery('#b4').click(function () {
       $('#pills-tab li:nth-child(3) a').tab('show');
+    });
+
+    jQuery('#modalsubmit').click(function () {
+      
+      $('#exampleModalCenter').modal('show');
     });
 
     this.firstFormGroup = this._formBuilder.group({
@@ -129,7 +142,7 @@ export class SignUpComponent implements OnInit {
   }
 
 
-  registerAplicant() {
+   registerAplicant() {
     let prekey = this.uploadVideoService.getKey();
     let key = this.uploadVideoService.getFileUrl(prekey);
 
@@ -144,13 +157,18 @@ export class SignUpComponent implements OnInit {
     this.model.university = this.selectedUniviversity;
     this.model.goal = this.praxisModality;
     this.model.selfDescription = this.selfDescription;
-    console.log(this.model)
-    this.usersService.newAplicant(this.model).subscribe((error)=>{
-      this.globalErrorHandlerService.handleError(error)
+    
+    this.respuesta=new Respuesta(); 
+    this.respuesta.status=false;
+     this.usersService.newAplicant(this.model).subscribe((error:any) => {
+            
+       this.respuesta.code=error.code;
+       this.respuesta.message=error.message;
+       this.respuesta.status=error.status;      
     })
     
-    
-  }
+  } 
+ 
   showFormControls(form: any) {
     return form && form.controls['name'] &&
       form.controls['name'].value; // Dr. IQ
@@ -161,7 +179,7 @@ export class SignUpComponent implements OnInit {
     this.files = new File([this.video], this.username + String(".mp4"), {
       type: 'video/mp4'
     });
-    console.log(this.files);
+    
 
 
   }
@@ -187,6 +205,32 @@ export class SignUpComponent implements OnInit {
       return true // Return as invalid email
     }
   }
+  validateUsername(event: any){
+    
+    this.usersService.checkUsername(this.username).subscribe((res)=>{
+      console.log(res);
+      if(res){
+        this.usernameR=false;
+      }else{
+        this.usernameR=true;
+        
+      }
+    })
+    
+  }
+  validateEmailR(event: any){
+    console.log(this.email);
+    this.usersService.checkEmail(this.email).subscribe((res)=>{
+      console.log(res);
+      if(res){
+        this.emailR=false;
+      }else{
+        this.emailR=true;
+        
+      }
+    })
+    
+  }
   validateSpace(str) {
     let regexp = /\s/;;
     if (regexp.test(this.password)) {
@@ -196,6 +240,14 @@ export class SignUpComponent implements OnInit {
       return false;
     }
 
+  }
+  numeric(phone){
+    if(isNaN(phone)){
+      return true;
+    }
+    else{
+      return false;
+    }
   }
 
 
