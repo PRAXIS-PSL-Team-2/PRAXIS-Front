@@ -94,6 +94,7 @@ export class RecordRTCComponent implements AfterViewInit{
     this.s1="btn bg-dark text-primary";
     this.s2="btn bg-dark text-white"
     this.stopRecording();
+    this.uploadService.aproved=true;
   }
   stopRecording() {
     this.s2="btn bg-dark text-white"
