@@ -208,7 +208,7 @@ export class SignUpComponent implements OnInit {
   validateUsername(event: any){
     
     this.usersService.checkUsername(this.username).subscribe((res)=>{
-      console.log(res);
+      
       if(res){
         this.usernameR=false;
       }else{
@@ -219,9 +219,9 @@ export class SignUpComponent implements OnInit {
     
   }
   validateEmailR(event: any){
-    console.log(this.email);
+    
     this.usersService.checkEmail(this.email).subscribe((res)=>{
-      console.log(res);
+     
       if(res){
         this.emailR=false;
       }else{
