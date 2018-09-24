@@ -65,22 +65,16 @@ export class RecordRTCComponent implements AfterViewInit{
   }
 
   startRecording() {
+    this.uploadService.aproved=false;
     this.s1="btn bg-dark text-white"
     this.s2="btn bg-dark text-primary"
     let mediaConstraints = {
-      video: true/*{
+      video: {
         mandatory: {
             maxHeight: 720,
             maxWidth: 1280
         },
-        optional: [
-            {minWidth: 320},
-            {minWidth: 640},
-            {minWidth: 960},
-            {minWidth: 1024},
-            {minWidth: 1280}
-        ]
-    }*/, audio: true
+    }, audio: true
     };
     navigator.mediaDevices
       .getUserMedia(mediaConstraints)
@@ -97,6 +91,7 @@ export class RecordRTCComponent implements AfterViewInit{
     this.uploadService.aproved=true;
   }
   stopRecording() {
+    
     this.s2="btn bg-dark text-white"
     let recordRTC = this.recordRTC;
     recordRTC.stopRecording(this.processVideo.bind(this));    
