@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Http, ResponseContentType } from '@angular/http';
 import * as RecordRTC from 'recordrtc';
 import {UploadVideoService} from '../../services/upload-video.service'
+
 @Component({
   selector: 'record-rtc',
   templateUrl: './record-rtc.component.html',
@@ -69,17 +70,15 @@ export class RecordRTCComponent implements AfterViewInit{
     this.s1="btn bg-dark text-white"
     this.s2="btn bg-dark text-primary"
     let mediaConstraints = {
-      video: {
-        mandatory: {
-            maxHeight: 720,
-            maxWidth: 1280
-        },
-    }, audio: true
-    };
-    navigator.mediaDevices
-      .getUserMedia(mediaConstraints)
-      .then(this.successCallback.bind(this), this.errorCallback.bind(this));
-
+      video: true, audio: true
+    }; 
+     
+      navigator.mediaDevices
+        .getUserMedia(mediaConstraints)
+        .then(this.successCallback.bind(this), this.errorCallback.bind(this));
+      
+    
+     
 
   }
   
