@@ -4,8 +4,6 @@ export class Respuesta {
             status:boolean;
             message:string;
             object:any;
-            user:any;
-            accessToken:string;
           
     
 }
