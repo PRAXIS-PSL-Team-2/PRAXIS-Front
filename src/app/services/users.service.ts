@@ -6,6 +6,7 @@ import { HttpHeaders } from '@angular/common/http';
 })
 export class UsersService {
   httpOptions;
+  urlapi:string='https://praxis-api-develop-v2.herokuapp.com'
   createAuthenticationHeaders() {
     this.httpOptions = {
       headers: new HttpHeaders({
@@ -16,16 +17,16 @@ export class UsersService {
   }
   constructor(private http:HttpClient) { }
   newAplicant(aplicant){
-    return this.http.post('https://praxis-api-develop.herokuapp.com/api/v1/students',aplicant ,this.httpOptions);
+    return this.http.post(this.urlapi+'/api/v1/students',aplicant ,this.httpOptions);
   }
   test(){
-    return this.http.get('https://praxis-api-develop.herokuapp.com/api/v1/students',this.httpOptions);
+    return this.http.get(this.urlapi+'/api/v1/students',this.httpOptions);
   }
   checkEmail(email:string){
-    return this.http.get('https://praxis-api-develop.herokuapp.com/api/v1/students/email/disponibility/'+email,this.httpOptions);
+    return this.http.get(this.urlapi+'/api/v1/students/email/disponibility/'+email,this.httpOptions);
   }
   checkUsername(username:string){
-    return this.http.get('https://praxis-api-develop.herokuapp.com/api/v1/students/username/disponibility/'+username,this.httpOptions);
+    return this.http.get(this.urlapi+'/api/v1/students/username/disponibility/'+username,this.httpOptions);
 
   }
 }
