@@ -21,6 +21,12 @@ import{UsersService} from './services/users.service';
 import{PraxisService} from './services/praxis.service';
 import{AuthService} from './services/auth.service';
 import { UploadVideoService } from './services/upload-video.service';
+import { DashboardComponent } from './Componentes/dashboard/dashboard.component';
+import { SessionsComponent } from './Componentes/dashboard/sessions/sessions.component';
+import { GradesComponent } from './Componentes/dashboard/grades/grades.component';
+import { SurveysComponent } from './Componentes/dashboard/surveys/surveys.component';
+import { AttendanceComponent } from './Componentes/dashboard/attendance/attendance.component';
+import { TestComponent } from './Componentes/test/test.component';
 
 const appRoutes: Routes = [
    
@@ -28,7 +34,17 @@ const appRoutes: Routes = [
   { path: 'signUp', component: SignUpComponent},
   { path: 'signIn', component: SignInComponent},
   { path: 'help', component: HelpComponent},
+  { path: 'test', component: TestComponent},
   { path: 'contact', component: ContactComponent},
+  { path: 'dashboard', component: DashboardComponent,children: [
+    {path: '', component: SessionsComponent},
+    {path: 'sessions', component: SessionsComponent},
+    {path: 'grades', component: GradesComponent},
+    {path: 'surveys', component: SurveysComponent},
+    {path: 'attendance', component: AttendanceComponent},
+    {path: '**',  redirectTo: ''},
+   
+  ]},
   { path: '**', redirectTo: ''}  
   
 ];
@@ -44,7 +60,7 @@ const appRoutes: Routes = [
     ContactComponent,
     NavbarComponent,
     FooterComponent, 
-    RecordRTCComponent
+    RecordRTCComponent, DashboardComponent, SessionsComponent, GradesComponent, SurveysComponent, AttendanceComponent, TestComponent
   ],
   imports: [
     NgSelectModule ,
