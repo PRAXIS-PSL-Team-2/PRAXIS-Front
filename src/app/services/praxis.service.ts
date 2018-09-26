@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
+import { url } from 'inspector';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,8 @@ export class PraxisService {
   constructor(private http:HttpClient) { }
 
   getUniverties(){
-    return this.http.get('https://praxis-api-develop.herokuapp.com/api/v1/praxis/universities');
+   
+    return this.http.get(process.env.urlapi+'/praxis/universities');
   
   }
 }
