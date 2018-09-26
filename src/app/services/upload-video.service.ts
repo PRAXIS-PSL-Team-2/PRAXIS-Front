@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import * as AWS from 'aws-sdk/global';
 import * as S3 from 'aws-sdk/clients/s3';
@@ -9,15 +10,15 @@ export class UploadVideoService {
   public video: File;
   public progress: Number = 0;
   public aproved:boolean=false;
-  FOLDER = 'presentation-videos/';
+  FOLDER = environment.folder;
   key: string;
 
 
   private bucket = new S3(
     {
-      accessKeyId: 'AKIAIKSKLVQ4BMWCZPEA',
-      secretAccessKey: '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',
-      region: 'us-east-1'
+      accessKeyId: environment.bucket.accessKeyId,
+      secretAccessKey:environment.bucket.secretAccessKey,
+      region: environment.bucket.region
     }
   );
 
@@ -41,7 +42,7 @@ export class UploadVideoService {
   uploadfile(file) {
     this.video=file;
     const params = {
-      Bucket: 'praxis-presentation-videos',
+      Bucket: environment.Bucket,
       Key: this.FOLDER + file.name,
       Body: file
     };
@@ -65,7 +66,7 @@ export class UploadVideoService {
   getFileUrl(key: String) {
 
     const params = {
-      Bucket: 'praxis-presentation-videos',
+      Bucket: environment.Bucket,
       Key: key,
     };
 

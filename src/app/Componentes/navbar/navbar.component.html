@@ -14,10 +14,18 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/contact">Contact</a>
-      </li>
+      </li>   
+
       
     </ul>
+    
   </div>
+  <div class="btn-group" *ngIf="userOn()">
+    <button class="btn btn-danger border-right">{{user.id}}</button>
+    <button class="btn btn-danger border-left"  data-toggle="modal" data-target="#logoutConfirmation">SingOut</button>
+   
+  </div>
+ 
 </nav>
 
 <div class="modal fade" id="logoutConfirmation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -25,18 +33,19 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Confirmación</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ¿ Esta seguro de que desea cerrar sesión?
+          Are you want sign out?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" (click)="onLogoutClick()" data-dismiss="modal">Aceptar</button>
+        <button type="button" class="btn btn-primary" (click)="logout()" data-dismiss="modal">Aceptar</button>
       </div>
     </div>
   </div>
 </div>
+<button (click)="test()">test</button>

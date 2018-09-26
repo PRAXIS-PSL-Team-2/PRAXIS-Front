@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
@@ -6,9 +7,9 @@ import { HttpHeaders } from '@angular/common/http';
 })
 export class UsersService {
   httpOptions;
-  urlapi:string='https://praxis-api-develop-v2.herokuapp.com'
+  urlapi:string=environment.urlapi;
   createAuthenticationHeaders() {
-    this.httpOptions = {
+    this.httpOptions = { 
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
         
