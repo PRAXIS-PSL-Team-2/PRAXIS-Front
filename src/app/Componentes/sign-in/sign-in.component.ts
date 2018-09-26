@@ -28,6 +28,7 @@ export class SignInComponent implements OnInit {
           if(res.user!=null && res.accessToken!=null){
               localStorage.setItem('user',JSON.stringify(res.user));
               localStorage.setItem('token',res.accessToken);
+              this.authService.checkToken();
               this.router.navigate(['dashboard']);
           }
           
