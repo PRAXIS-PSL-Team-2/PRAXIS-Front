@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
@@ -7,6 +8,7 @@ import { HttpHeaders } from '@angular/common/http';
 })
 export class PraxisService {
   httpOptions;
+  urlapi:string=environment.urlapi;
   createAuthenticationHeaders() {
     this.httpOptions = {
       headers: new HttpHeaders({
@@ -19,7 +21,7 @@ export class PraxisService {
   constructor(private http:HttpClient) { }
 
   getUniverties(){
-    return this.http.get('https://praxis-api-develop.herokuapp.com/api/v1/praxis/universities');
+    return this.http.get(this.urlapi+'/api/v1/praxis/universities');
   
   }
 }

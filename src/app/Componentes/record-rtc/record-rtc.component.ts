@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Http, ResponseContentType } from '@angular/http';
 import * as RecordRTC from 'recordrtc';
 import {UploadVideoService} from '../../services/upload-video.service'
+
 @Component({
   selector: 'record-rtc',
   templateUrl: './record-rtc.component.html',
@@ -65,27 +66,19 @@ export class RecordRTCComponent implements AfterViewInit{
   }
 
   startRecording() {
+    this.uploadService.aproved=false;
     this.s1="btn bg-dark text-white"
     this.s2="btn bg-dark text-primary"
     let mediaConstraints = {
-      video: true/*{
-        mandatory: {
-            maxHeight: 720,
-            maxWidth: 1280
-        },
-        optional: [
-            {minWidth: 320},
-            {minWidth: 640},
-            {minWidth: 960},
-            {minWidth: 1024},
-            {minWidth: 1280}
-        ]
-    }*/, audio: true
-    };
-    navigator.mediaDevices
-      .getUserMedia(mediaConstraints)
-      .then(this.successCallback.bind(this), this.errorCallback.bind(this));
-
+      video: true, audio: true
+    }; 
+     
+      navigator.mediaDevices
+        .getUserMedia(mediaConstraints)
+        .then(this.successCallback.bind(this), this.errorCallback.bind(this));
+      
+    
+     
 
   }
   
@@ -97,6 +90,7 @@ export class RecordRTCComponent implements AfterViewInit{
     this.uploadService.aproved=true;
   }
   stopRecording() {
+    
     this.s2="btn bg-dark text-white"
     let recordRTC = this.recordRTC;
     recordRTC.stopRecording(this.processVideo.bind(this));    

@@ -32,7 +32,7 @@
     </li>
   </ul>
 </div>
-<div class="tab-content" id="pills-tabContent">
+<div class="tab-content mt-2" id="pills-tabContent">
   <div class="tab-pane fade show active" id="pills-information" role="tabpanel" aria-labelledby="pills-information-tab">
     <div class="row my-3 justify-content-center">
       <div class="col-sm-5">
@@ -44,18 +44,18 @@
             <div class="form-group">
               <label for="namen">Name</label>
               <input class="form-control" type="text" name="namen" id="namen" [(ngModel)]="namen" required>
-              <div *ngIf="length(namen,6,40 )" class="alert alert-danger">
+              <div *ngIf="length(namen,1,40 )" class="alert alert-danger">
                 <ul class="help-block ">
-                  <li *ngIf="length(namen,6,40 )">Name is required (6-40 characters)</li>
+                  <li *ngIf="length(namen,1,40 )">Name is required </li>
                 </ul>
               </div>
             </div>
             <div class="form-group">
               <label for="lastname">Lastname</label>
               <input class="form-control" type="text" name="lastname" id="lastname" [(ngModel)]="lastname" required>
-              <div *ngIf="length(lastname,4,40 )" class="alert alert-danger">
+              <div *ngIf="length(lastname,1,40 )" class="alert alert-danger">
                 <ul class="help-block ">
-                  <li *ngIf="length(lastname,4,40 )">Lastname is required (4-40 characters)</li>
+                  <li *ngIf="length(lastname,1,40 )">Lastname is required </li>
                 </ul>
               </div>
             </div>
@@ -177,10 +177,10 @@
 
             <div class="form-group">
               <label for="name">Password</label>
-              <input type="password" class="form-control" id="repassword" required [(ngModel)]="repassword" name="repassword">
-              <div *ngIf="(password != repassword)" class="alert alert-danger">
+              <input type="password" class="form-control" id="rePassword" required [(ngModel)]="rePassword" name="rePassword">
+              <div *ngIf="(password != rePassword)" class="alert alert-danger">
                 <ul class="help-block">
-                  <li *ngIf="(password != repassword)">Passwords not match</li>
+                  <li *ngIf="(password != rePassword)">Passwords not match</li>
                 </ul>
               </div>
             </div>
@@ -207,6 +207,7 @@
 
     <div class="row my-3">
       <div class="col-sm-5">
+
         <div class="card">
           <div class="card-header">
             Personal Information
@@ -276,8 +277,8 @@
 
       </div>
     </div>
-    <div *ngIf="length(namen,6,40 )||
-                length(lastname,4,40 )||
+    <div *ngIf="length(namen,1,40 )||
+                length(lastname,1,40 )||
                 length(selfDescription,1,100)||
                 length(selectedUniviversity,1,100)||
                 length(email,1,50)||
@@ -288,14 +289,14 @@
                 length(username,5,20 )||
                 length(password,6,16 )||
                 validateSpace(password)||
-                (password != repassword)||emailR||
+                (password != rePassword)||emailR||
                 usernameR
                 "
       class="alert alert-danger" id="submit-Alert">
       <h5> <b>Problems in your register form</b> </h5>
       <ul class="help-block">
-        <li *ngIf="length(namen,6,40 )||
-                  length(lastname,4,40 )||
+        <li *ngIf="length(namen,1,40 )||
+                  length(lastname,1,40 )||
                   length(selfDescription,1,100)||
                   length(selectedUniviversity,1,100)||
                   length(email,1,50)||
@@ -309,7 +310,7 @@
         <li *ngIf="length(username,5,20 )||
                       length(password,6,16 )||
                       validateSpace(password)||
-                      (password != repassword)||usernameR">
+                      (password != rePassword)||usernameR">
           <h6>Check your Account information</h6>
         </li>
         <li *ngIf="videocheck()">
@@ -346,9 +347,9 @@
 
 
 
-      <button type="button" (click)="submit()" class="btn btn-primary  bg-primary text-white" [disabled]="(password != repassword)||
-                    length(namen,6,40 )||
-                    length(lastname,6,40 )||
+      <button type="button" (click)="submit()" class="btn btn-primary  bg-primary text-white" [disabled]="(password != rePassword)||
+                    length(namen,1,40 )||
+                    length(lastname,1,40 )||
                     length(email,1,40)||
                     validateEmail()||
                     length(phone,1,12)||
@@ -380,7 +381,7 @@
       <div class="modal-body">
         <b>is fine all your information ?</b>
         <div class="form-check">
-          <input type="checkbox" [(ngModel)]="theCheckbox" data-md-icheck (change)="toggleVisibility($event)" />
+          <input type="checkbox" [(ngModel)]="marked" data-md-icheck (change)="toggleVisibility($event)" />
           <label class="form-check-label" for="exampleCheck1">i agree to<a class="text-primary" data-toggle="modal"
               data-target="#terms"> <b> terms and conditions</b> </a> </label>
         </div>
