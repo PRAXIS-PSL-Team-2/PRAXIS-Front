@@ -10,7 +10,7 @@ export class EnvvarService {
   constructor() {  }
   public getApi(){
     console.log(this.env.REACT_APP_URL); 
-    return JSON.stringify(this.env.REACT_APP_URL);
+    
       
   }
 }
