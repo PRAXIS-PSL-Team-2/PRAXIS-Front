@@ -9,7 +9,7 @@ export class EnvvarService {
   env:runtimeEnv = runtimeEnv();
   constructor() {  }
   public getApi(){
-    console.log(this.env.apiurl); 
+    console.log(this.env.REACT_APP_URL); 
     return JSON.stringify(this.env.REACT_APP_URL);
       
   }
