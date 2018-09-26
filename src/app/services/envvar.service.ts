@@ -9,7 +9,8 @@ export class EnvvarService {
   env:runtimeEnv = runtimeEnv();
   constructor() {  }
   public getApi():string{
-    return this.env.apiurl;
+    console.log(this.env.apiurl);
+    return JSON.stringify(this.env.apiurl);
       
   }
 }
