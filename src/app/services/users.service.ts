@@ -24,10 +24,10 @@ export class UsersService {
     return this.http.get(this.urlapi+'/api/v1/students',this.httpOptions);
   }
   checkEmail(email:string){
-    return this.http.get(this.urlapi+'/api/v1/students/email/disponibility/'+email,this.httpOptions);
+    return this.http.get(this.urlapi+'/api/v1/users/email/disponibility/'+email,this.httpOptions);
   }
   checkUsername(username:string){
-    return this.http.get(this.urlapi+'/api/v1/students/username/disponibility/'+username,this.httpOptions);
+    return this.http.get(this.urlapi+'/api/v1/users/username/disponibility/'+username,this.httpOptions);
 
   }
 }
