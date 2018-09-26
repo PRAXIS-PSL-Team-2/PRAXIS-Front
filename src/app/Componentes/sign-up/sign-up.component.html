@@ -1,7 +1,7 @@
-<div class="row mt-2 justify-content-center">
+<div class="row my-3 justify-content-center">
   <h2>Create my Account</h2>
 </div>
-<div class="row justify-content-center">
+<div class="row my-3 justify-content-center">
 
   <ul class="nav nav-pills my-1 " id="pills-tab" role="tablist">
     <li class="nav-item">
@@ -34,8 +34,8 @@
 </div>
 <div class="tab-content mt-2" id="pills-tabContent">
   <div class="tab-pane fade show active" id="pills-information" role="tabpanel" aria-labelledby="pills-information-tab">
-    <div class="row justify-content-center">
-      <div class="col-5">
+    <div class="row my-3 justify-content-center">
+      <div class="col-sm-5">
         <div class="card px-2 py-2">
           <div class="card-header">
             Personal Information
@@ -77,7 +77,7 @@
 
 
       </div>
-      <div class="col-5">
+      <div class="col-sm-5">
         <div class="card px-2 py-2">
           <div class="card-header">
             Academic Information
@@ -139,15 +139,15 @@
 
 
     </div>
-    <div class="row mt-2 justify-content-center">
+    <div class="row my-3 justify-content-center">
       <button id="n1" (click)="s1n()" type="button" class="btn  btn-secondary">
         Next
       </button>
     </div>
   </div>
   <div class="tab-pane fade" id="pills-account" role="tabpanel" aria-labelledby="pills-account-tab">
-    <div class="row justify-content-center">
-      <div class="col-5">
+    <div class="row my-3 justify-content-center">
+      <div class="col-sm-5">
         <div class="card px-2 py-2">
           <div class="card-header">
             Account Information
@@ -191,7 +191,7 @@
 
       </div>
     </div>
-    <div class="row mt-2 justify-content-center">
+    <div class="row my-3 justify-content-center">
       <button id="b2" (click)="s2b()" type="button" class="btn  btn-secondary">
         Back
       </button>
@@ -204,9 +204,10 @@
 
   <div class="tab-pane fade" id="pills-submit" role="tabpanel" aria-labelledby="pills-submit-tab">
 
-    
-    <div class="row">
-      <div class="col-5">
+
+    <div class="row my-3">
+      <div class="col-sm-5">
+
         <div class="card">
           <div class="card-header">
             Personal Information
@@ -217,6 +218,7 @@
             <p><label><b>Self Description:</b></label>{{selfDescription}}</p>
           </div>
         </div>
+        <br><br>
         <div class="card">
           <div class="card-header">
             Academic Information
@@ -228,7 +230,7 @@
             <label><b>PRAXIS modality: </b></label>{{praxisModality}}<br>
           </div>
         </div>
-
+        <br><br>
 
         <div class="card">
           <div class="card-header">
@@ -238,17 +240,17 @@
             {{username}}
           </div>
         </div>
-
+        <br><br>
 
       </div>
-      <div class="col-7">
+      <div class="col-sm-6">
 
         <div class="row justify-content-center">
 
           <record-rtc></record-rtc>
 
         </div>
-        <div class="row justify-content-center">
+        <div class="row my-3 justify-content-center">
           <div class="card">
             <div class="card-header">
               Video Requierements
@@ -318,15 +320,15 @@
     </div>
 
     <div *ngIf="upload" class="div">
-      <div class="row">
-        <div class="col-4">
+      <div class="row my-3">
+        <div class="col-sm-4">
           <div class="card   bg-dark">
             <div class="card-header bg-dark text-white text-center ">
               Uploading Information
             </div>
           </div>
         </div>
-        <div class="col-8">
+        <div class="col-sm-8">
           <div class="progress " style="height: 30px;">
             <div class="progress-bar   " role="progressbar" [style.width]="progress+'%'" aria-valuenow="25"
               aria-valuemin="0" aria-valuemax="100">
@@ -338,7 +340,7 @@
 
     </div>
 
-    <div class="row mt-2 justify-content-center">
+    <div class="row my-3 justify-content-center">
       <button id="b3" (click)="s3b()" type="button" class="btn  btn-secondary">
         Back
       </button>
