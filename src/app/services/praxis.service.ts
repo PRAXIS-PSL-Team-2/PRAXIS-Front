@@ -1,3 +1,4 @@
+import { EnvvarService } from './envvar.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
@@ -17,11 +18,11 @@ export class PraxisService {
     };
   }
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private envvarService:EnvvarService) { }
 
   getUniverties(){
    
-    return this.http.get(process.env.urlapi+'/praxis/universities');
+    return this.http.get(this.envvarService.getApi()+'/praxis/universities');
   
   }
 }

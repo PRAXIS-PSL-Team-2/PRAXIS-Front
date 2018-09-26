@@ -1,3 +1,4 @@
+import { EnvvarService } from './envvar.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
@@ -14,15 +15,15 @@ export class UsersService {
       })
     };
   }
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private envvarService:EnvvarService) { }
   newAplicant(aplicant){
-    return this.http.post(process.env.urlapi+'/students',aplicant ,this.httpOptions);
+    return this.http.post(this.envvarService.getApi()+'/students',aplicant ,this.httpOptions);
   }
   checkEmail(email:string){
-    return this.http.get(process.env.urlapi+'/students/email/disponibility/'+email,this.httpOptions);
+    return this.http.get(this.envvarService.getApi()+'/students/email/disponibility/'+email,this.httpOptions);
   }
   checkUsername(username:string){
-    return this.http.get(process.env.urlapi+'/students/username/disponibility/'+username,this.httpOptions);
+    return this.http.get(this.envvarService.getApi()+'/students/username/disponibility/'+username,this.httpOptions);
 
   }
 }
