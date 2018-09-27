@@ -1,4 +1,3 @@
-import { Praxis } from './../../../../../../../classes';
 import { Class } from './../../../models/class';
 import { Professor } from './../../../models/professor';
 import { Student } from './../../../models/student';

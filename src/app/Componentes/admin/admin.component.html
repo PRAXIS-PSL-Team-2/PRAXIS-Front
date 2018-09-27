@@ -7,9 +7,13 @@
         <div class="row">
           <div class="col-md-3"><h3 class="praxis-title">Praxis:</h3></div>
           <div class="col-md-9">
-            <select class="form-control form-control-lg">
-              <option>Large select</option>
-            </select>
+            <span *ngIf="allPraxis.length > 0">
+              <select class="form-control form-control-lg">
+                <option *ngFor="let praxis of allPraxis" [value]="praxis._id">
+                  {{praxis.versionName}}
+                </option>
+              </select>
+          </span>
           </div>
         </div>
       </div>
@@ -37,56 +41,56 @@
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="inputVersionName">Version Name</label>
-                  <input type="text" class="form-control" id="inputVersionName">
+                  <input type="text" class="form-control" id="inputVersionName" [(ngModel)]="currentPraxis.versionName" name="versionName">
                 </div>
                 <div class="form-group col-md-6">
                   <label for="inputUniversity">University</label>
-                  <input type="text" class="form-control" id="inputUniversity">
+                  <input type="text" class="form-control" id="inputUniversity" [(ngModel)]="currentPraxis.university" name="university">
                 </div>
               </div>
               <div class="form-row">
                 <div class="form-group col-md-5">
                   <div class="form-group">
                     <label for="inputInscriptionOpen">Inscription Open Date</label>
-                    <input type="Date" class="form-control" id="inputInscriptionOpen">
+                    <input type="Date" class="form-control" id="inputInscriptionOpen" [ngModel]="openInscription" name="openInscriptionDate">
                   </div>  
                   <div class="form-group">
                     <label for="inputInscriptionClose">Inscription Close Date</label>
-                    <input type="Date" class="form-control" id="inputInscriptionClose">
+                    <input type="Date" class="form-control" id="inputInscriptionClose" [ngModel]="closeInscription" name=closeInscriptionDate>
                   </div>
                 </div>
                 <div class="col-md-2"></div>
                 <div class="form-group col-md-5">
                   <div class="form-group">
                     <label for="inputStartDate">Praxis Start Date</label>
-                    <input type="Date" class="form-control" id="inputStartDate">
+                    <input type="Date" class="form-control" id="inputStartDate" [ngModel]="initPraxis" name="initPraxis">
                   </div>
                   <div class="form-group">
                     <label for="inputEndDate">Praxis End Date</label>
-                    <input type="Date" class="form-control" id="inputEndDate">
+                    <input type="Date" class="form-control" id="inputEndDate" [ngModel]="endPRaxis" name="endPRaxis">
                   </div>
                   </div>
               </div>
               <div class="form-group">
                 <label for="inputSessionsLink">Virtual Sessions Link</label>
-                <input type="text" class="form-control" id="inputSessionsLink">
+                <input type="text" class="form-control" id="inputSessionsLink" [(ngModel)]="currentPraxis.virtualSessionLink" name="virtualSessionLink">
               </div>
               <div class="form-group">
                 <label for="inputSurveyLink">Survey Link</label>
-                <input type="text" class="form-control" id="inputSurveyLink">
+                <input type="text" class="form-control" id="inputSurveyLink" [(ngModel)]="currentPraxis.surveyLink" name="surveyLink">
               </div>
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="inputClassDays">Class Days</label>
-                  <input type="text" class="form-control" id="inputClassDays" placeholder="Mondays and Thursdays">
+                  <input type="text" class="form-control" id="inputClassDays" placeholder="Mondays and Thursdays" [(ngModel)]="currentPraxis.classDays" name="classDays">
                 </div>
                 <div class="form-group col-md-4">
                   <label for="inputClassHour">Classes Hour</label>
-                  <input type="text" class="form-control" id="inputClassHour" placeholder="5 - 7 PM">
+                  <input type="text" class="form-control" id="inputClassHour" placeholder="5 - 7 PM" [(ngModel)]="currentPraxis.classTimeRange" name="classTimeRange">
                 </div>
                 <div class="form-group col-md-2">
                   <label for="inputStudentsCapacity">Students Capacity</label>
-                  <input type="number" class="form-control" id="inputStudentsCapacity">
+                  <input type="number" class="form-control" id="inputStudentsCapacity" [(ngModel)]="currentPraxis.studentsCapacity" name="studentsCapacity">
                 </div>
               </div>
               <button type="submit" class="btn btn-primary">Save Changes</button>
@@ -220,12 +224,6 @@
                               <label for="inputProfessorSpecialty">Specialty</label>
                               <input type="text" class="form-control" id="inputProfessorSpecialty">
                             </div>
-                          </div>
-                          <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputProfessorDescription">Self Description</label>
-                                <textarea class="form-control" id="inputProfessorDescription" rows="5"></textarea>
-                              </div>
                           </div>
                         </form>
                   </div>
