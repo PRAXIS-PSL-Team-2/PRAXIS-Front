@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Praxis } from './../../../../../../../classes';
+import { Praxis } from '../../../models/praxis';
 import { Class } from './../../../models/class';
 import { Professor } from './../../../models/professor';
 import { Student } from './../../../models/student';
@@ -26,6 +26,7 @@ export class SessionsComponent implements OnInit {
   classes: [Class];
   classeP: Class;
   praxis: Praxis;
+  praxiss: [Praxis];
   idUser: any = JSON.parse(localStorage.getItem('user')).id;
   role: string = JSON.parse(localStorage.getItem('user')).role;
   ngOnInit() {
@@ -67,10 +68,23 @@ export class SessionsComponent implements OnInit {
         if (res) {
           this.proffesor = res;
           this.user = res;
-        }
-        
+           }      
 
       });
+
+      this.praxisService.getAllPraxis().then((res:[Praxis])=>{
+        if(res){
+          res.forEach((praxis:Praxis) => {
+           praxis.schedule.forEach((item:Class)=>{
+
+           })
+          });
+
+
+        }
+
+      })
+
     }
 
 

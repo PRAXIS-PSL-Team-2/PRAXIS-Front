@@ -1,7 +1,6 @@
 
 import { Professor } from './professor';
 
-
 export class Class{
     public _id:String;
     public classId: String;
@@ -14,7 +13,7 @@ export class Class{
         _id:String,
         type:String,
         resource:String;
-    }];
+   }];
     public homework: String;
     public studentData:{
         _id:String,
