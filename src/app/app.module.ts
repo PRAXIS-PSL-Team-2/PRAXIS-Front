@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
@@ -20,15 +21,21 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import{UsersService} from './services/users.service';
 import{PraxisService} from './services/praxis.service';
 import{AuthService} from './services/auth.service';
+import { AuthGuard } from './guards/auth.guard';
+
 import { UploadVideoService } from './services/upload-video.service';
 import { DashboardComponent } from './Componentes/dashboard/dashboard.component';
 import { SessionsComponent } from './Componentes/dashboard/sessions/sessions.component';
-import { GradesComponent } from './Componentes/dashboard/grades/grades.component';
-import { SurveysComponent } from './Componentes/dashboard/surveys/surveys.component';
-import { AttendanceComponent } from './Componentes/dashboard/attendance/attendance.component';
+
+
+
 import { TestComponent } from './Componentes/test/test.component';
+import { AdminComponent } from './Componentes/admin/admin.component';
+import { SessionComponent } from './Componentes/dashboard/session/session.component';
+import { PraxisinfoComponent } from './Componentes/dashboard/praxisinfo/praxisinfo.component';
 
 const appRoutes: Routes = [
+  
    
   { path: '', component: HomeComponent},
   { path: 'signUp', component: SignUpComponent},
@@ -36,12 +43,12 @@ const appRoutes: Routes = [
   { path: 'help', component: HelpComponent},
   { path: 'test', component: TestComponent},
   { path: 'contact', component: ContactComponent},
-  { path: 'dashboard', component: DashboardComponent,children: [
+  { path: 'admin', component: AdminComponent},
+  { path: 'dashboard',canActivate:[AuthGuard], component: DashboardComponent,children: [
     {path: '', component: SessionsComponent},
+    {path: 'session', component: SessionComponent},
     {path: 'sessions', component: SessionsComponent},
-    {path: 'grades', component: GradesComponent},
-    {path: 'surveys', component: SurveysComponent},
-    {path: 'attendance', component: AttendanceComponent},
+    {path: 'praxisinfo', component: PraxisinfoComponent},
     {path: '**',  redirectTo: ''},
    
   ]},
@@ -60,7 +67,7 @@ const appRoutes: Routes = [
     ContactComponent,
     NavbarComponent,
     FooterComponent, 
-    RecordRTCComponent, DashboardComponent, SessionsComponent, GradesComponent, SurveysComponent, AttendanceComponent, TestComponent
+    RecordRTCComponent, DashboardComponent, SessionsComponent, TestComponent, AdminComponent, SessionComponent, PraxisinfoComponent
   ],
   imports: [
     NgSelectModule ,
@@ -74,10 +81,18 @@ const appRoutes: Routes = [
     ),
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [UploadVideoService,AuthService,UsersService,PraxisService],
+  providers: [UploadVideoService,AuthService,UsersService,PraxisService,AuthGuard],
  
     
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(private authService:AuthService){
+    this.authService.checkToken();
+  }
+  ngOnInit() {
+    this.authService.checkToken();
+  }
+
+}
 

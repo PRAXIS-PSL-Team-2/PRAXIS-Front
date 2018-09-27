@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { environment } from './../../../environments/environment';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -9,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
   user:any;
-  constructor( private router:Router) { }
+  constructor( private router:Router, private authService :AuthService) { }
 
   ngOnInit() {
     
@@ -25,12 +26,10 @@ export class NavbarComponent implements OnInit {
     }
 
   }
-  test(){
-    console.log(environment.urlapi);
-  }
+ 
   logout(){
     localStorage.clear();
-    this.router.navigate['/home'];
+    this.router.navigate(['/']); 
   }
 
 
