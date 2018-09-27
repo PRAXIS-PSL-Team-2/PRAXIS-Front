@@ -21,8 +21,8 @@
     </ul>
     
   </div>
-  <div class="btn-group" *ngIf="userOn()">
-    <button class="btn btn-danger border-right">{{user.id}}</button>
+  <div class="btn-group float-left" *ngIf="userOn()">
+    <button class="btn btn-danger border-right">{{user.username}}</button>
     <button class="btn btn-danger border-left"  data-toggle="modal" data-target="#logoutConfirmation">SingOut</button>
    
   </div>

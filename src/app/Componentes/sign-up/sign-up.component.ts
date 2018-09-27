@@ -95,10 +95,10 @@ export class SignUpComponent implements OnInit {
       $('#pills-tab li:nth-child(3) a').tab('show');
     });
 
-    jQuery('#modalsubmit').click(function () {
+    /*jQuery('#modalsubmit').click(function () {
       
       $('#exampleModalCenter').modal('show');
-    });
+    });*/
 
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
@@ -144,7 +144,7 @@ export class SignUpComponent implements OnInit {
 
    registerAplicant() {
     let prekey = this.uploadVideoService.getKey();
-    let key = this.uploadVideoService.getFileUrl(prekey);
+    let key = prekey;
 
     this.model = new Aplicant();
     this.model.video = key;
@@ -221,6 +221,7 @@ export class SignUpComponent implements OnInit {
   validateEmailR(event: any){
     
     this.usersService.checkEmail(this.email).subscribe((res)=>{
+       console.log(res);
      
       if(res){
         this.emailR=false;
