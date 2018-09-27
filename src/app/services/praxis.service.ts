@@ -120,12 +120,27 @@ export class PraxisService {
         }
       })
     }); 
+    
 
   
   }
   getPraxis(_idPraxis:string):Promise<any>{
     return  new Promise((resolve,reject)=>{
       this.http.get(this.urlapi+'/api/v1/praxis/'+_idPraxis).subscribe((res:any)=>{
+        if(res.status){
+          resolve(res.object);
+        }
+        else{
+          reject(false);
+        }
+      })
+
+    });
+    
+  }
+  getAllPraxis():Promise<[any]>{
+    return  new Promise((resolve,reject)=>{
+      this.http.get(this.urlapi+'/api/v1/praxis').subscribe((res:any)=>{
         if(res.status){
           resolve(res.object);
         }

@@ -1,3 +1,5 @@
+import { Praxis } from './../../../models/praxis';
+import { PraxisService } from './../../../services/praxis.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./praxisinfo.component.css']
 })
 export class PraxisinfoComponent implements OnInit {
-
-  constructor() { }
+  idUser: any = JSON.parse(localStorage.getItem('user')).id;
+  praxiss:[Praxis];
+  constructor(private praxisService:PraxisService) { }
 
   ngOnInit() {
+    
+
   }
+
 
 }

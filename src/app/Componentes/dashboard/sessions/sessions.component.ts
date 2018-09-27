@@ -68,6 +68,7 @@ export class SessionsComponent implements OnInit {
           this.proffesor = res;
           this.user = res;
         }
+        
 
       });
     }
