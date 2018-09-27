@@ -26,9 +26,9 @@ import { AuthGuard } from './guards/auth.guard';
 import { UploadVideoService } from './services/upload-video.service';
 import { DashboardComponent } from './Componentes/dashboard/dashboard.component';
 import { SessionsComponent } from './Componentes/dashboard/sessions/sessions.component';
-import { GradesComponent } from './Componentes/dashboard/grades/grades.component';
+
 import { SurveysComponent } from './Componentes/dashboard/surveys/surveys.component';
-import { AttendanceComponent } from './Componentes/dashboard/attendance/attendance.component';
+
 import { TestComponent } from './Componentes/test/test.component';
 import { AdminComponent } from './Componentes/admin/admin.component';
 
@@ -45,9 +45,7 @@ const appRoutes: Routes = [
   { path: 'dashboard',canActivate:[AuthGuard], component: DashboardComponent,children: [
     {path: '', component: SessionsComponent},
     {path: 'sessions', component: SessionsComponent},
-    {path: 'grades', component: GradesComponent},
     {path: 'surveys', component: SurveysComponent},
-    {path: 'attendance', component: AttendanceComponent},
     {path: '**',  redirectTo: ''},
    
   ]},
@@ -66,7 +64,7 @@ const appRoutes: Routes = [
     ContactComponent,
     NavbarComponent,
     FooterComponent, 
-    RecordRTCComponent, DashboardComponent, SessionsComponent, GradesComponent, SurveysComponent, AttendanceComponent, TestComponent, AdminComponent
+    RecordRTCComponent, DashboardComponent, SessionsComponent, SurveysComponent, TestComponent, AdminComponent
   ],
   imports: [
     NgSelectModule ,
