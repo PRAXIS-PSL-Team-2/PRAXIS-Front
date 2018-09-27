@@ -1,0 +1,490 @@
+
+<section class="admin">
+  <div class="container-fluid header">
+    <div class="admin-header row">
+      <div class="col-md-1"></div>
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-3"><h3 class="praxis-title">Praxis:</h3></div>
+          <div class="col-md-9">
+            <select class="form-control form-control-lg">
+              <option>Large select</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="header-buttons col-md-3">
+          <button type="button" class="btn btn-primary load-button">Load</button>
+          <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#newPraxis">New Praxis</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container tabs">
+      <nav>
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-praxis" role="tab" aria-controls="nav-home" aria-selected="true">Praxis</a>
+            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-students" role="tab" aria-controls="nav-profile" aria-selected="false">Students</a>
+            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-professors" role="tab" aria-controls="nav-contact" aria-selected="false">Professors</a>
+            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-classes" role="tab" aria-controls="nav-contact" aria-selected="false">Classes</a>
+            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-candidates" role="tab" aria-controls="nav-contact" aria-selected="false">Candidates</a>
+          </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+          <!-- PRAXIS -->
+          <div class="tab-pane fade show active" id="nav-praxis" role="tabpanel" aria-labelledby="nav-home-tab">
+            <form>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputVersionName">Version Name</label>
+                  <input type="text" class="form-control" id="inputVersionName">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputUniversity">University</label>
+                  <input type="text" class="form-control" id="inputUniversity">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-5">
+                  <div class="form-group">
+                    <label for="inputInscriptionOpen">Inscription Open Date</label>
+                    <input type="Date" class="form-control" id="inputInscriptionOpen">
+                  </div>  
+                  <div class="form-group">
+                    <label for="inputInscriptionClose">Inscription Close Date</label>
+                    <input type="Date" class="form-control" id="inputInscriptionClose">
+                  </div>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-5">
+                  <div class="form-group">
+                    <label for="inputStartDate">Praxis Start Date</label>
+                    <input type="Date" class="form-control" id="inputStartDate">
+                  </div>
+                  <div class="form-group">
+                    <label for="inputEndDate">Praxis End Date</label>
+                    <input type="Date" class="form-control" id="inputEndDate">
+                  </div>
+                  </div>
+              </div>
+              <div class="form-group">
+                <label for="inputSessionsLink">Virtual Sessions Link</label>
+                <input type="text" class="form-control" id="inputSessionsLink">
+              </div>
+              <div class="form-group">
+                <label for="inputSurveyLink">Survey Link</label>
+                <input type="text" class="form-control" id="inputSurveyLink">
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputClassDays">Class Days</label>
+                  <input type="text" class="form-control" id="inputClassDays" placeholder="Mondays and Thursdays">
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputClassHour">Classes Hour</label>
+                  <input type="text" class="form-control" id="inputClassHour" placeholder="5 - 7 PM">
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="inputStudentsCapacity">Students Capacity</label>
+                  <input type="number" class="form-control" id="inputStudentsCapacity">
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Save Changes</button>
+            </form>
+          </div>
+
+          <!-- Students -->
+          <div class="tab-pane fade nav-students" id="nav-students" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <div class="table-responsive">
+              <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">Team</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Phone</th>
+                      <th scope="col">Goal</th>
+                      <th scope="col">Faults</th>
+                      <th scope="col">Grade</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th class="team-col" scope="row"><input class="form-control" type="number"></th>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                    </tr>
+                    <tr>
+                      <th class="team-col" scope="row"><input class="form-control" type="number"></th>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                    </tr>
+                    <tr>
+                      <th class="team-col" scope="row"><input class="form-control" type="number"></th>
+                      <td>Larry</td>
+                      <td>the Bird</td>
+                      <td>@twitter</td>
+                      <td>Larry</td>
+                      <td>the Bird</td>
+                      <td>@twitter</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </div>
+
+          <!-- Professors -->
+          <div class="tab-pane fade" id="nav-professors" role="tabpanel" aria-labelledby="nav-contact-tab">
+            <div class="table-responsive">
+              <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">Name</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Username</th>
+                      <th scope="col">Specialty</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                      <td>Mark</td>
+                    </tr>
+                    <tr>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                      <td>Jacob</td>
+                    </tr>
+                    <tr>
+                      <td>Larry</td>
+                      <td>the Bird</td>
+                      <td>@twitter</td>
+                      <td>Larry</td>
+                    </tr>
+                  </tbody>
+              </table>
+            </div>
+
+            <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#addProfessor">Add Professor</button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="addProfessor" tabindex="-1" role="dialog" aria-labelledby="addProfessor" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle"><strong>New Professor</strong></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                      <form>
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="inputProfessorUsername">Username</label>
+                              <input type="text" class="form-control" id="inputProfessorUsername">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="inputProfessorPassword">Password</label>
+                              <input type="text" class="form-control" id="inputProfessorPassword">
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="inputProfessorName">Name</label>
+                              <input type="text" class="form-control" id="inputProfessorName">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="inputProfessorLastName">Last Name</label>
+                              <input type="text" class="form-control" id="inputProfessorLastName">
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="inputProfessorEmail">Email</label>
+                              <input type="email" class="form-control" id="inputProfessorEmail">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="inputProfessorSpecialty">Specialty</label>
+                              <input type="text" class="form-control" id="inputProfessorSpecialty">
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="inputProfessorDescription">Self Description</label>
+                                <textarea class="form-control" id="inputProfessorDescription" rows="5"></textarea>
+                              </div>
+                          </div>
+                        </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success">Create Professor</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Classes -->
+          <div class="tab-pane fade" id="nav-classes" role="tabpanel" aria-labelledby="nav-contact-tab">
+            <div class="row classes">
+              <div class="col-md-4">
+                <div class="card">
+                  <h5 class="card-header"><strong>Topic: </strong>Agile</h5>
+                  <div class="card-body">
+                    <div class="clas-info">
+                      <p><strong>Modality: </strong>Virtual</p>
+                      <p><strong>Date: </strong>27/09/2018</p>
+                      <p><strong>Hour: </strong>5:00pm</p>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <div class="clas-info">
+                      <p><strong>Professor: </strong>John Doe</p>
+                      <p><strong>Email: </strong>johndoe@email.com</p>
+                      <p><strong>Specialty: </strong>Back End</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+            <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#addClass">Add Class</button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="addClass" tabindex="-1" role="dialog" aria-labelledby="addClass" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle"><strong>New Class</strong></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                      <form>
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="inputClassTopic">Topic</label>
+                              <input type="text" class="form-control" id="inputClassTopic">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="inputModality">Modality</label>
+                              <select id="inputModality" class="form-control">
+                                <option selected>In PSL</option>
+                                <option>Virtual</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="form-row">
+                              <div class="form-group col-md-6">
+                                  <label for="inputClassDate">Date</label>
+                                  <input type="Date" class="form-control" id="inputClassDate">
+                                </div>
+                                <div class="form-group col-md-6">
+                                  <label for="inputClassHour">Hour</label>
+                                  <input type="Time" class="form-control" id="inputClassHour">
+                                </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="inputProfessor">Professor</label>
+                              <select id="inputProfessor" class="form-control">
+                                <option selected>John</option>
+                                <option>Carlos</option>
+                              </select>
+                          </div>
+                        </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success">Create Class</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+
+          <!-- Candidates -->
+          <div class="tab-pane fade nav-candidates" id="nav-candidates" role="tabpanel" aria-labelledby="nav-contact-tab">
+              <div class="table-responsive">
+                  <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th scope="col">Name</th>
+                          <th scope="col">Email</th>
+                          <th scope="col">Phone</th>
+                          <th scope="col">Goal</th>
+                          <th scope="col">Video</th>
+                          <th scope="col">Accepted</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Mark</td>
+                          <td>Otto</td>
+                          <td>@mdo</td>
+                          <td>Mark</td>
+                          <td class="video-col">
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#video">
+                              <i class="fa fa-play-circle" aria-hidden="true"></i>
+                            </button>
+                          </td>
+                          <td class="accepted-col">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Jacob</td>
+                          <td>Thornton</td>
+                          <td>@fat</td>
+                          <td>Jacob</td>
+                          <td class="video-col">
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#video">
+                              <i class="fa fa-play-circle" aria-hidden="true"></i>
+                            </button>
+                          </td>
+                          <td class="accepted-col">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Larry</td>
+                          <td>the Bird</td>
+                          <td>@twitter</td>
+                          <td>Larry</td>
+                          <td class="video-col">
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#video">
+                              <i class="fa fa-play-circle" aria-hidden="true"></i>
+                            </button>
+                          </td>
+                          <td class="accepted-col">
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                              </div>
+                            </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="video" tabindex="-1" role="dialog" aria-labelledby="video" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle"><strong>Presentation Video: </strong>John Doe</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                          <video controls [src]="getFileUrl('presentation-videos/uribe.mp4')">
+                          </video>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+          </div>
+        </div>
+  </div>
+
+  
+
+  <!-- Modal -->
+  <div class="modal fade" id="newPraxis" tabindex="-1" role="dialog" aria-labelledby="newPraxis" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle"><strong>New Praxis</strong></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputVersionName">Version Name</label>
+                  <input type="text" class="form-control" id="inputVersionName">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputUniversity">University</label>
+                  <input type="text" class="form-control" id="inputUniversity">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-5">
+                  <div class="form-group">
+                    <label for="inputInscriptionOpen">Inscription Open Date</label>
+                    <input type="Date" class="form-control" id="inputInscriptionOpen">
+                  </div>  
+                  <div class="form-group">
+                    <label for="inputInscriptionClose">Inscription Close Date</label>
+                    <input type="Date" class="form-control" id="inputInscriptionClose">
+                  </div>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-5">
+                  <div class="form-group">
+                    <label for="inputStartDate">Praxis Start Date</label>
+                    <input type="Date" class="form-control" id="inputStartDate">
+                  </div>
+                  <div class="form-group">
+                    <label for="inputEndDate">Praxis End Date</label>
+                    <input type="Date" class="form-control" id="inputEndDate">
+                  </div>
+                  </div>
+              </div>
+              <div class="form-group">
+                <label for="inputSessionsLink">Virtual Sessions Link</label>
+                <input type="text" class="form-control" id="inputSessionsLink">
+              </div>
+              <div class="form-group">
+                <label for="inputSurveyLink">Survey Link</label>
+                <input type="text" class="form-control" id="inputSurveyLink">
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputClassDays">Class Days</label>
+                  <input type="text" class="form-control" id="inputClassDays" placeholder="Mondays and Thursdays">
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputClassHour">Classes Hour</label>
+                  <input type="text" class="form-control" id="inputClassHour" placeholder="5 - 7 PM">
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="inputStudentsCapacity">Students Capacity</label>
+                  <input type="number" class="form-control" id="inputStudentsCapacity">
+                </div>
+              </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-success">Create Praxis</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
