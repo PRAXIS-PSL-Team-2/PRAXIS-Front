@@ -1,0 +1,83 @@
+.admin-header {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.load-button {
+    margin-right: 10px;
+}
+
+.praxis-title {
+    text-align: right;
+}
+
+.praxis-title, .header-buttons .btn {
+    margin-top: 5px;
+}
+
+#newPraxis .modal-lg {
+    max-width: 70vw;
+}
+
+.tabs .tab-content {
+    padding-top: 20px;
+}
+
+.nav-students table .form-control {
+    max-width: 50px;
+}
+
+.nav-students table .team-col {
+    width: 55px;
+}
+
+.nav-candidates table .video-col {
+    text-align: center;
+    width: 55px;
+}
+
+.nav-candidates table .video-col .btn {
+    font-size: 20px;
+    padding: 0;
+    padding-right: 5px;
+    padding-left: 5px;
+    text-align: center;
+}
+
+.nav-candidates table .accepted-col {
+    width: 30px;
+    text-align: center;
+}
+
+#nav-professors .save-button {
+    margin-right: 10px;
+}
+
+#nav-classes .card p {
+    margin-bottom: 0;
+}
+#nav-classes .classes {
+    margin-bottom: 20px;
+}
+
+.nav-candidates .modal-lg {
+    width: 80vw;
+    max-width: 80vw!important;
+}
+
+.nav-candidates .modal-body {
+    text-align: center;
+}
+
+.nav-candidates .modal-body video {
+    width: 80%;
+}
+
+.nav-students table input::-webkit-outer-spin-button,
+.nav-students table input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
