@@ -29,7 +29,7 @@ export class PraxisService {
 
   getUniverties(){
     return this.http.get(this.urlapi+'/api/v1/praxis/universities');
-  
+
   }
   getStudent(_idStudent:string):Promise<any>{
    return new Promise((resolve,reject)=>{
