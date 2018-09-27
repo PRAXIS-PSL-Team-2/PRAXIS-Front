@@ -1,7 +1,7 @@
 
 import { Professor } from './professor';
 
-export class Class{
+export class Class {
     public _id:String;
     public classId: String;
     public topic: String;

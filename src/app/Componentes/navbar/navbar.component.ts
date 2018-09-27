@@ -26,6 +26,10 @@ export class NavbarComponent implements OnInit {
     }
 
   }
+
+  userAdmin() {
+    return JSON.parse(localStorage.getItem('user')).role != 'admin'
+  }
  
   logout(){
     localStorage.clear();

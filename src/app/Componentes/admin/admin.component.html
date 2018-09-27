@@ -8,7 +8,7 @@
           <div class="col-md-3"><h3 class="praxis-title">Praxis:</h3></div>
           <div class="col-md-9">
             <span *ngIf="allPraxis.length > 0">
-              <select class="form-control form-control-lg">
+              <select class="form-control form-control-lg" id="select-praxis">
                 <option *ngFor="let praxis of allPraxis" [value]="praxis._id">
                   {{praxis.versionName}}
                 </option>
@@ -18,7 +18,7 @@
         </div>
       </div>
       <div class="header-buttons col-md-3">
-          <button type="button" class="btn btn-primary load-button">Load</button>
+          <button type="button" class="btn btn-primary load-button" (click)="loadPraxis()">Load</button>
           <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#newPraxis">New Praxis</button>
       </div>
     </div>
@@ -113,32 +113,13 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th class="team-col" scope="row"><input class="form-control" type="number"></th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-                    <tr>
-                      <th class="team-col" scope="row"><input class="form-control" type="number"></th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th class="team-col" scope="row"><input class="form-control" type="number"></th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
+                    <tr *ngFor="let student of students">
+                      <th class="team-col" scope="row">{{student.team}}</th>
+                      <td>{{student.studentData.name}}</td>
+                      <td>{{student.email}}</td>
+                      <td>{{student.studentData.phone}}</td>
+                      <td>{{student.studentData.goal}}</td>
+                      <td>{{student.studentData.team}}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -159,23 +140,11 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                      <td>Mark</td>
-                    </tr>
-                    <tr>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                      <td>Jacob</td>
-                    </tr>
-                    <tr>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                      <td>Larry</td>
+                    <tr *ngFor="let professor of professors">
+                      <td>{{professor.professorData.name}}</td>
+                      <td>{{professor.email}}</td>
+                      <td>{{professor.username}}</td>
+                      <td>{{professor.professorData.specialty}}</td>
                     </tr>
                   </tbody>
               </table>
@@ -239,20 +208,21 @@
           <!-- Classes -->
           <div class="tab-pane fade" id="nav-classes" role="tabpanel" aria-labelledby="nav-contact-tab">
             <div class="row classes">
-              <div class="col-md-4">
+              
+              <div *ngFor="let class of classes" class="col-md-4">
                 <div class="card">
-                  <h5 class="card-header"><strong>Topic: </strong>Agile</h5>
+                  <h5 class="card-header"><strong>Topic: </strong>{{class.topic}}</h5>
                   <div class="card-body">
                     <div class="clas-info">
-                      <p><strong>Modality: </strong>Virtual</p>
-                      <p><strong>Date: </strong>27/09/2018</p>
-                      <p><strong>Hour: </strong>5:00pm</p>
+                      <p><strong>Modality: </strong>{{class.modality}}</p>
+                      <p><strong>Date: </strong>{{class.date}}</p>
+                      <p><strong>Hour: </strong>{{class.hour}}</p>
                     </div>
                     <div class="dropdown-divider"></div>
                     <div class="clas-info">
-                      <p><strong>Professor: </strong>John Doe</p>
-                      <p><strong>Email: </strong>johndoe@email.com</p>
-                      <p><strong>Specialty: </strong>Back End</p>
+                      <p><strong>Professor: </strong>{{class.professor.name}}</p>
+                      <p><strong>Email: </strong>{{class.professor.email}}</p>
+                      <p><strong>Specialty: </strong>{{class.professor.specialty}}</p>
                     </div>
                   </div>
                 </div>
@@ -330,49 +300,17 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                          <td>Mark</td>
+                        <tr *ngFor="let candidate of candidates">
+                          <td>{{candidate.studentData.name}}</td>
+                          <td>{{candidate.email}}</td>
+                          <td>{{candidate.studentData.phone}}</td>
+                          <td>{{candidate.studentData.goal}}</td>
                           <td class="video-col">
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#video">
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#video" (click)="setVideo(candidate.studentData.video)">
                               <i class="fa fa-play-circle" aria-hidden="true"></i>
                             </button>
                           </td>
-                          <td class="accepted-col">
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                          <td>Jacob</td>
-                          <td class="video-col">
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#video">
-                              <i class="fa fa-play-circle" aria-hidden="true"></i>
-                            </button>
-                          </td>
-                          <td class="accepted-col">
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Larry</td>
-                          <td>the Bird</td>
-                          <td>@twitter</td>
-                          <td>Larry</td>
-                          <td class="video-col">
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#video">
-                              <i class="fa fa-play-circle" aria-hidden="true"></i>
-                            </button>
-                          </td>
-                          <td class="accepted-col">
+                            <td class="accepted-col">
                               <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                               </div>
@@ -388,13 +326,13 @@
                   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle"><strong>Presentation Video: </strong>John Doe</h5>
+                        <h5 class="modal-title" id="exampleModalLongTitle"><strong>Presentation Video</strong></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
                       <div class="modal-body">
-                          <video controls [src]="getFileUrl('presentation-videos/sa2nt2olita2dor.mp4')">
+                          <video controls [src]="getFileUrl(selectedVideoKey)">
                           </video>
                       </div>
                       <div class="modal-footer">

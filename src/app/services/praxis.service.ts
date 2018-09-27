@@ -166,7 +166,7 @@ export class PraxisService {
   }
   getPraxisCandidates(_idPraxis:string):Promise<[any]>{
     return  new Promise((resolve,reject)=>{
-      this.http.get(this.urlapi+'/api/v1/praxis'+_idPraxis+'/students').subscribe((res:any)=>{
+      this.http.get(this.urlapi+'/api/v1/praxis/'+_idPraxis+'/candidates').subscribe((res:any)=>{
         if(res.status){
           resolve(res.object);
         }
@@ -176,6 +176,5 @@ export class PraxisService {
       })
 
     });
-    
   }
 }
