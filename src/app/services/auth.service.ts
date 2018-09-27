@@ -11,6 +11,7 @@ import { HttpHeaders } from '@angular/common/http';
 export class AuthService {
   loggedValidate:boolean;
   httpOptions;
+ 
   urlapi:string=environment.urlapi;
   createAuthenticationHeaders() {
     this.httpOptions = { 
