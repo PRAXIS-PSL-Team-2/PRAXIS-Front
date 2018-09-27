@@ -710,8 +710,9 @@
       </div>
       <div class="modal-body">
         <div class="row justify-content-center my-2">
-          <div class="col-5">
-            <img class="card-img-top" src="https://image.freepik.com/free-icon/bad-face_318-60192.jpg" alt="Card image cap">
+          <div  class="col-5">
+            <img *ngIf="!respuesta.status" class="card-img-top" src="https://image.freepik.com/free-icon/bad-face_318-60192.jpg" alt="Card image cap">
+            <img *ngIf="respuesta.status" class="card-img-top" src="https://image.freepik.com/iconen-gratis/kwaad-slechte-emoticon_318-40219.jpg" alt="Card image cap">
           </div>
         </div>
 
