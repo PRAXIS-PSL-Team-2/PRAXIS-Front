@@ -105,6 +105,23 @@ export class PraxisService {
       })
     }); 
 
+  
+  }
+
+
+  getClassesStudent(_idEstudent:string):Promise<[any]>{
+    return  new Promise((resolve,reject)=>{
+      this.http.get(this.urlapi+'/api/v1/students/'+_idEstudent+'/classes').subscribe((res:any)=>{
+        if(res.status){
+          resolve(res.object);
+        }
+        else{
+          reject(false);
+        }
+      })
+    }); 
+
+  
   }
   getPraxis(_idPraxis:string):Promise<any>{
     return  new Promise((resolve,reject)=>{

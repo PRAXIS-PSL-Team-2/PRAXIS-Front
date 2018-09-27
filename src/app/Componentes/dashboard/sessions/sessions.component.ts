@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Praxis } from './../../../../../../../classes';
 import { Class } from './../../../models/class';
 import { Professor } from './../../../models/professor';
@@ -14,64 +15,69 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SessionsComponent implements OnInit {
 
-  constructor(private praxisService: PraxisService) { }
+  constructor(private praxisService: PraxisService,private router:Router) { }
   user: any;
-  student:Student;
-  proffesor :Professor;
+  student: Student;
+  proffesor: Professor;
   proffesors: [Professor];
-  students:[Student];
+  students: [Student];
   classes: [Class];
-  classeP:Class;
+  classeP: Class;
   praxis: Praxis;
   idUser: any = JSON.parse(localStorage.getItem('user')).id;
   role: string = JSON.parse(localStorage.getItem('user')).role;
   ngOnInit() {
-    this.praxisService.getStudents().then((res:[Student]) => this.students = res);
-    this.praxisService.getProfessors().then((res:[Professor]) => this.proffesors = res);
-   
+    this.praxisService.getStudents().then((res: [Student]) => this.students = res);
+    this.praxisService.getProfessors().then((res: [Professor]) => this.proffesors = res);
+
     if (this.role == "student") {
-      this.praxisService.getStudent(this.idUser).then((res:Student )=> {
-        if (res) {       
-          this.student = res;
-          this.user=res;         
+      this.praxisService.getStudent(this.idUser).then((res: Student) => {
+        if (res) {
+          this.student = res; 
+          this.user = res;
         }
-        this.praxisService.getClasses(this.user.userData.praxisVersion).then((res:[Class])=>{
-          if(res){
-            this.classes=res;
+        this.praxisService.getClasses(this.student.studentData.praxisVersion).then((res: [Class]) => {
+          if (res) {
+            this.classes = res;
           }
-          else{
-    
+          else {
+
           }
 
         })
-        this.praxisService.getPraxis(this.user.userData.praxisVersion).then((res:Praxis)=>{
-          if(res){
-            this.praxis=res;
+        this.praxisService.getPraxis(this.student.studentData.praxisVersion).then((res: Praxis) => {
+          if (res) {
+            this.praxis = res;
           }
-          else{
-    
+          else {
+
           }
 
-        })      
+        })
       });
     }
     else {
-      this.praxisService.getProfessor(this.idUser).then((res:Professor) => {
+      this.praxisService.getProfessor(this.idUser).then((res: Professor) => {
         if (res) {
           this.proffesor = res;
-          this.user=res;
+          this.user = res;
         }
 
       });
     }
-    
-
-   
 
 
 
 
 
+
+
+
+
+  }
+  leer(classid:string,studentid:string){
+    this.router.navigate([this.router.url+'/session', {classid:classid,studentid:studentid}]);
+    this.router.navigate([this.router.url+'/session', {classid:classid,studentid:studentid}]);
 
   }
 

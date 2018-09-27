@@ -3,16 +3,16 @@ export class Student {
     public username: string;
     public email: string;
     public role: string;
-    public studentData: StudentData;
+    public studentData:  {
+                          name: string;
+                          lastName: string;
+                          phone: string;
+                          university: string;
+                           goal: string;
+                          selfDescription: string;
+                          video: string;
+                           praxisVersion: string;
+  }
   }
 
-  export class StudentData {
-    public name: string;
-    public lastName: string;
-    public phone: string;
-    public university: string;
-    public goal: string;
-    public selfDescription: string;
-    public video: string;
-    public praxisVersion: string;
-  }
+ 

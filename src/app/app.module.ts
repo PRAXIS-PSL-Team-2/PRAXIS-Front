@@ -31,6 +31,7 @@ import { SurveysComponent } from './Componentes/dashboard/surveys/surveys.compon
 
 import { TestComponent } from './Componentes/test/test.component';
 import { AdminComponent } from './Componentes/admin/admin.component';
+import { SessionComponent } from './Componentes/dashboard/session/session.component';
 
 const appRoutes: Routes = [
   
@@ -44,6 +45,7 @@ const appRoutes: Routes = [
   { path: 'admin', component: AdminComponent},
   { path: 'dashboard',canActivate:[AuthGuard], component: DashboardComponent,children: [
     {path: '', component: SessionsComponent},
+    {path: 'session', component: SessionComponent},
     {path: 'sessions', component: SessionsComponent},
     {path: 'surveys', component: SurveysComponent},
     {path: '**',  redirectTo: ''},
@@ -64,7 +66,7 @@ const appRoutes: Routes = [
     ContactComponent,
     NavbarComponent,
     FooterComponent, 
-    RecordRTCComponent, DashboardComponent, SessionsComponent, SurveysComponent, TestComponent, AdminComponent
+    RecordRTCComponent, DashboardComponent, SessionsComponent, SurveysComponent, TestComponent, AdminComponent, SessionComponent
   ],
   imports: [
     NgSelectModule ,

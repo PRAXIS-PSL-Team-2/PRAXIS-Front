@@ -1,1 +1,23 @@
+<div class="row  mt-1">
 
+  <div class="col-sm-6" *ngFor="let class of classes">
+    <div class="card my-2 mx-1">
+      <h5 class="card-header bg-dark text-white">{{class.topic}}</h5>
+      <div class="card-body">
+        <p class="card-text">Description about the class</p>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><strong>Modalidad: </strong>{{class.modality}}</li>
+          <li class="list-group-item"><strong>Date: </strong>{{class.date}}<strong> at</strong> :{{class.hour}} </li>
+          <li class="list-group-item"><strong>Profesor: </strong>{{class.professor.name}} {{class.professor.lastName}}</li>
+          <li class="list-group-item"><strong>Email: </strong>{{class.professor.email}}</li>
+        </ul>
+        <div class="row mt-2 justify-content-center">
+          <a  (click)="leer(class.classId,student._id)" routerLink="./session" class="btn btn-primary float-rigth">Go somewhere</a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
