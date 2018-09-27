@@ -1,50 +1,95 @@
 <div class="row justify-content-center mt-1">
 
-    <div class="col-sm-10" >
-      <div class="card my-2 mx-1">
-        <h5 class="card-header bg-dark text-white">{{class.topic}}</h5>
-        <div class="card-body">
-          <div class="row">
-            <div class="col border-right "> 
-              <ul class="list-group list-group-flush">
-            <li class="list-group-item"><strong>Information</strong></li>
-              <li class="list-group-item"><ul class="list-group list-group-flush">
+  <div class="col-sm-10">
+    <div class="card my-2 mx-1">
+      <h5 class="card-header bg-dark text-white">{{class.topic}}</h5>
+      <div class="card-body">
+        <div class="row">
+          <div class="col border-right ">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><strong>Information</strong></li>
+              <li class="list-group-item">
+                <ul class="list-group list-group-flush">
                   <li class="list-group-item"><strong>Modalidad: </strong>{{class.modality}}</li>
-                  <li class="list-group-item"><strong>Date: </strong>{{class.date}}<strong> at</strong> :{{class.hour}} </li>
-                  <li class="list-group-item"><strong>Profesor: </strong>{{class.professor.name}} {{class.professor.lastName}} </li>
+                  <li class="list-group-item"><strong>Date: </strong>{{class.date}}<strong> at</strong> :{{class.hour}}
+                  </li>
+                  <li class="list-group-item"><strong>Profesor: </strong>{{class.professor.name}}
+                    {{class.professor.lastName}} </li>
                   <li class="list-group-item"><strong>Email: </strong>{{class.professor.email}}</li>
-                 
-                </ul></li>
-          </ul>
-          <ul class="list-group list-group-flush">
-              <li class="list-group-item"><strong>Recursos</strong><ul class="list-group list-group-flush">
-                  <li class="list-group-item" *ngFor="let resource of resources"><a href={{resource.resource}}>{{resource.resource}}</a></li>
-              </ul></li>
-              
-          </ul> 
-         
 
-            </div>
-            <div class="col"> 
+                </ul>
+              </li>
+            </ul>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><strong>Recursos</strong>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item" *ngFor="let resource of resources"><a href={{resource.resource}}>{{resource.resource}}</a></li>
+                </ul>
+              </li>
+
+            </ul>
+
+
+          </div>
+          <div class="col">
             <ul class="list-group list-group-flush">
               <li class="list-group-item"><strong>Academic Information</strong></li>
-                <li class="list-group-item"><ul class="list-group list-group-flush">
-                    <li class="list-group-item"><strong>Homework</strong><p>{{class.homework}}</p></li>
-                    <li class="list-group-item"><strong>Grade: </strong>{{class.studentData.grade}}</li>
-                    <li class="list-group-item"><strong>Attendance: </strong>{{class.studentData.attendance}}</li>
-                   
-                  </ul></li>
+              <li class="list-group-item">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><strong>Homework</strong>
+                    <p>{{class.homework}}</p>
+                  </li>
+                  <li class="list-group-item"><strong>Grade: </strong>{{class.studentData.grade}}</li>
+                  <li class="list-group-item"><strong>Attendance: </strong>{{class.studentData.attendance}}</li>
+
+                </ul>
+              </li>
             </ul>
-              
-            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><strong>Survey</strong>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"> <button type="button" class="btn btn-outline-primary" data-toggle="modal"
+                    data-target="#terms" > <b>Complete the survey of this session</b> </button>
+                    </li>
+
+                </ul>
+              </li>
+            </ul>
+           
+
           </div>
-         
-
-
         </div>
-  
+
+
+
       </div>
-  
+
+    </div>
+
+  </div>
+</div>
+
+<div class="row justify-content-cente">
+  <div class="modal fade r" id="terms" tabindex="-1" role="dialog" aria-labelledby="termsLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content col-12">
+          <div class="modal-header">
+            <h5 class="modal-title" id="termsLabel">Survey</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfR7pYAYvngUSFOnPThlHkmIZTRPoiKhGv3PFNJjPfAx--Vbw/viewform?embedded=true" width="700" height="400" frameborder="0" marginheight="0" marginwidth="0">Cargando...</iframe>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      
     </div>
   </div>
+</div>
+
   
