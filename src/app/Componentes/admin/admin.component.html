@@ -15,7 +15,7 @@
       </div>
       <div class="header-buttons col-md-3">
           <button type="button" class="btn btn-primary load-button">Load</button>
-          <button type="button" class="btn btn-outline-success">New Praxis</button>
+          <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#newPraxis">New Praxis</button>
       </div>
     </div>
   </div>
@@ -45,17 +45,26 @@
                 </div>
               </div>
               <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="inputInscriptionOpen">Inscription Open Date</label>
-                  <input type="Date" class="form-control" id="inputInscriptionOpen">
-                  <label for="inputInscriptionClose">Inscription Close Date</label>
-                  <input type="Date" class="form-control" id="inputInscriptionClose">
+                <div class="form-group col-md-5">
+                  <div class="form-group">
+                    <label for="inputInscriptionOpen">Inscription Open Date</label>
+                    <input type="Date" class="form-control" id="inputInscriptionOpen">
+                  </div>  
+                  <div class="form-group">
+                    <label for="inputInscriptionClose">Inscription Close Date</label>
+                    <input type="Date" class="form-control" id="inputInscriptionClose">
+                  </div>
                 </div>
-                <div class="form-group col-md-6">
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-5">
+                  <div class="form-group">
                     <label for="inputStartDate">Praxis Start Date</label>
                     <input type="Date" class="form-control" id="inputStartDate">
+                  </div>
+                  <div class="form-group">
                     <label for="inputEndDate">Praxis End Date</label>
                     <input type="Date" class="form-control" id="inputEndDate">
+                  </div>
                   </div>
               </div>
               <div class="form-group">
@@ -167,7 +176,66 @@
                   </tbody>
               </table>
             </div>
-            <button type="button" class="btn btn-outline-success">Add Professor</button>
+
+            <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#addProfessor">Add Professor</button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="addProfessor" tabindex="-1" role="dialog" aria-labelledby="addProfessor" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle"><strong>New Professor</strong></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                      <form>
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="inputProfessorUsername">Username</label>
+                              <input type="text" class="form-control" id="inputProfessorUsername">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="inputProfessorPassword">Password</label>
+                              <input type="text" class="form-control" id="inputProfessorPassword">
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="inputProfessorName">Name</label>
+                              <input type="text" class="form-control" id="inputProfessorName">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="inputProfessorLastName">Last Name</label>
+                              <input type="text" class="form-control" id="inputProfessorLastName">
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="inputProfessorEmail">Email</label>
+                              <input type="email" class="form-control" id="inputProfessorEmail">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="inputProfessorSpecialty">Specialty</label>
+                              <input type="text" class="form-control" id="inputProfessorSpecialty">
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="inputProfessorDescription">Self Description</label>
+                                <textarea class="form-control" id="inputProfessorDescription" rows="5"></textarea>
+                              </div>
+                          </div>
+                        </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success">Create Professor</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <!-- Classes -->
@@ -192,7 +260,61 @@
                 </div>
               </div>
             </div>
-            <button type="button" class="btn btn-outline-success">Add Class</button>
+          
+            <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#addClass">Add Class</button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="addClass" tabindex="-1" role="dialog" aria-labelledby="addClass" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle"><strong>New Class</strong></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                      <form>
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="inputClassTopic">Topic</label>
+                              <input type="text" class="form-control" id="inputClassTopic">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="inputModality">Modality</label>
+                              <select id="inputModality" class="form-control">
+                                <option selected>In PSL</option>
+                                <option>Virtual</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="form-row">
+                              <div class="form-group col-md-6">
+                                  <label for="inputClassDate">Date</label>
+                                  <input type="Date" class="form-control" id="inputClassDate">
+                                </div>
+                                <div class="form-group col-md-6">
+                                  <label for="inputClassHour">Hour</label>
+                                  <input type="Time" class="form-control" id="inputClassHour">
+                                </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="inputProfessor">Professor</label>
+                              <select id="inputProfessor" class="form-control">
+                                <option selected>John</option>
+                                <option>Carlos</option>
+                              </select>
+                          </div>
+                        </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success">Create Class</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
           </div>
 
           <!-- Candidates -->
@@ -216,7 +338,7 @@
                           <td>@mdo</td>
                           <td>Mark</td>
                           <td class="video-col">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#video">
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#video">
                               <i class="fa fa-play-circle" aria-hidden="true"></i>
                             </button>
                           </td>
@@ -231,7 +353,11 @@
                           <td>Thornton</td>
                           <td>@fat</td>
                           <td>Jacob</td>
-                          <td class="video-col"><a href=""><i class="fa fa-play-circle" aria-hidden="true"></i></a></td>
+                          <td class="video-col">
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#video">
+                              <i class="fa fa-play-circle" aria-hidden="true"></i>
+                            </button>
+                          </td>
                           <td class="accepted-col">
                             <div class="form-check">
                               <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
@@ -243,7 +369,11 @@
                           <td>the Bird</td>
                           <td>@twitter</td>
                           <td>Larry</td>
-                          <td class="video-col"><a href=""><i class="fa fa-play-circle" aria-hidden="true"></i></a></td>
+                          <td class="video-col">
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#video">
+                              <i class="fa fa-play-circle" aria-hidden="true"></i>
+                            </button>
+                          </td>
                           <td class="accepted-col">
                               <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
@@ -255,19 +385,18 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Save Changes</button>
                 
-
                 <!-- Modal -->
                 <div class="modal fade" id="video" tabindex="-1" role="dialog" aria-labelledby="video" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                        <h5 class="modal-title" id="exampleModalLongTitle"><strong>Presentation Video: </strong>John Doe</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
                       <div class="modal-body">
-                          <video controls src="https://www.youtube.com/00c67e4a-89db-4caa-a3ae-d223e0dff978">
+                          <video controls [src]="getFileUrl('presentation-videos/uribe.mp4')">
                           </video>
                       </div>
                       <div class="modal-footer">
@@ -278,5 +407,84 @@
                 </div>
           </div>
         </div>
+  </div>
+
+  
+
+  <!-- Modal -->
+  <div class="modal fade" id="newPraxis" tabindex="-1" role="dialog" aria-labelledby="newPraxis" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle"><strong>New Praxis</strong></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputVersionName">Version Name</label>
+                  <input type="text" class="form-control" id="inputVersionName">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputUniversity">University</label>
+                  <input type="text" class="form-control" id="inputUniversity">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-5">
+                  <div class="form-group">
+                    <label for="inputInscriptionOpen">Inscription Open Date</label>
+                    <input type="Date" class="form-control" id="inputInscriptionOpen">
+                  </div>  
+                  <div class="form-group">
+                    <label for="inputInscriptionClose">Inscription Close Date</label>
+                    <input type="Date" class="form-control" id="inputInscriptionClose">
+                  </div>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-5">
+                  <div class="form-group">
+                    <label for="inputStartDate">Praxis Start Date</label>
+                    <input type="Date" class="form-control" id="inputStartDate">
+                  </div>
+                  <div class="form-group">
+                    <label for="inputEndDate">Praxis End Date</label>
+                    <input type="Date" class="form-control" id="inputEndDate">
+                  </div>
+                  </div>
+              </div>
+              <div class="form-group">
+                <label for="inputSessionsLink">Virtual Sessions Link</label>
+                <input type="text" class="form-control" id="inputSessionsLink">
+              </div>
+              <div class="form-group">
+                <label for="inputSurveyLink">Survey Link</label>
+                <input type="text" class="form-control" id="inputSurveyLink">
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputClassDays">Class Days</label>
+                  <input type="text" class="form-control" id="inputClassDays" placeholder="Mondays and Thursdays">
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputClassHour">Classes Hour</label>
+                  <input type="text" class="form-control" id="inputClassHour" placeholder="5 - 7 PM">
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="inputStudentsCapacity">Students Capacity</label>
+                  <input type="number" class="form-control" id="inputStudentsCapacity">
+                </div>
+              </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-success">Create Praxis</button>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
