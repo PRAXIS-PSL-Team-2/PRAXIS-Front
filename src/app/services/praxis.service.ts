@@ -150,4 +150,32 @@ export class PraxisService {
     });
     
   }
+  getPraxisStudents(_idPraxis:string):Promise<[any]>{
+    return  new Promise((resolve,reject)=>{
+      this.http.get(this.urlapi+'/api/v1/praxis/'+_idPraxis+'/students').subscribe((res:any)=>{
+        if(res.status){
+          resolve(res.object);
+        }
+        else{
+          reject(false);
+        }
+      })
+
+    });
+    
+  }
+  getPraxisCandidates(_idPraxis:string):Promise<[any]>{
+    return  new Promise((resolve,reject)=>{
+      this.http.get(this.urlapi+'/api/v1/praxis'+_idPraxis+'/students').subscribe((res:any)=>{
+        if(res.status){
+          resolve(res.object);
+        }
+        else{
+          reject(false);
+        }
+      })
+
+    });
+    
+  }
 }
