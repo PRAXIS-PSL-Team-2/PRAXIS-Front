@@ -22,6 +22,6 @@ export class PraxisService {
 
   getUniverties(){
     return this.http.get(this.urlapi+'/api/v1/praxis/universities');
-  
+
   }
 }
