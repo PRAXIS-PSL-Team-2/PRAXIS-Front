@@ -1,9 +1,9 @@
-import { User } from "./user";
-import { Class } from "./classes";
+
+import { Class } from "./class";
 
 export class Praxis{
-	public candidates: User[];
-    public students: User[];
+	public candidates: String[];
+    public students: String[];
     public _id: number;
     public versionName: string[];
     public university: string;

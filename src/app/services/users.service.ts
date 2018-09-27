@@ -30,4 +30,5 @@ export class UsersService {
     return this.http.get(this.urlapi+'/api/v1/users/username/disponibility/'+username,this.httpOptions);
 
   }
+  
 }

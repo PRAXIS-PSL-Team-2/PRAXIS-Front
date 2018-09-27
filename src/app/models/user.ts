@@ -1,5 +1,5 @@
-import { StudentData } from "./students";
-import { ProfessorData } from "./professors";
+import { StudentData } from "./student";
+import { ProfessorData } from "./professor";
 
 export class User {
     public username: string;

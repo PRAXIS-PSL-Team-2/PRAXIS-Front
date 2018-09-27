@@ -22,7 +22,8 @@ export class AuthGuard implements CanActivate {
 
     return new Promise((resolve,reject)=>{
       this.authService.checkToken().subscribe((res:any)=>{
-        if(res.status){
+        
+        if(res.status && res.id==JSON.parse(localStorage.getItem('user')).id ){
           resolve(true);
         }
         else{

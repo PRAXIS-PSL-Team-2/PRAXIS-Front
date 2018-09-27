@@ -1,4 +1,4 @@
-export class Professors {
+export class Professor {
     public _id: number;
     public username: string;
     public email: string;

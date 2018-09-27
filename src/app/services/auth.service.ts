@@ -30,8 +30,11 @@ export class AuthService {
 
     
   }
-    checkToken(){
+  checkToken(){
     this.createAuthenticationHeaders();
     return this.http.get(String(environment.urlapi)+'/auth/check/token',this.httpOptions);
+  }
+  validateRol(){
+    
   }
 }
