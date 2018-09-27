@@ -27,11 +27,12 @@ import { UploadVideoService } from './services/upload-video.service';
 import { DashboardComponent } from './Componentes/dashboard/dashboard.component';
 import { SessionsComponent } from './Componentes/dashboard/sessions/sessions.component';
 
-import { SurveysComponent } from './Componentes/dashboard/surveys/surveys.component';
+
 
 import { TestComponent } from './Componentes/test/test.component';
 import { AdminComponent } from './Componentes/admin/admin.component';
 import { SessionComponent } from './Componentes/dashboard/session/session.component';
+import { PraxisinfoComponent } from './Componentes/dashboard/praxisinfo/praxisinfo.component';
 
 const appRoutes: Routes = [
   
@@ -47,7 +48,7 @@ const appRoutes: Routes = [
     {path: '', component: SessionsComponent},
     {path: 'session', component: SessionComponent},
     {path: 'sessions', component: SessionsComponent},
-    {path: 'surveys', component: SurveysComponent},
+    {path: 'praxisinfo', component: PraxisinfoComponent},
     {path: '**',  redirectTo: ''},
    
   ]},
@@ -66,7 +67,7 @@ const appRoutes: Routes = [
     ContactComponent,
     NavbarComponent,
     FooterComponent, 
-    RecordRTCComponent, DashboardComponent, SessionsComponent, SurveysComponent, TestComponent, AdminComponent, SessionComponent
+    RecordRTCComponent, DashboardComponent, SessionsComponent, TestComponent, AdminComponent, SessionComponent, PraxisinfoComponent
   ],
   imports: [
     NgSelectModule ,

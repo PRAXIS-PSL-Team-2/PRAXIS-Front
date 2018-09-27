@@ -16,6 +16,8 @@ import { Component, OnInit } from '@angular/core';
 export class SessionsComponent implements OnInit {
 
   constructor(private praxisService: PraxisService,private router:Router) { }
+  isStudent:boolean;
+  isProfessor:boolean;
   user: any;
   student: Student;
   proffesor: Professor;
@@ -31,6 +33,8 @@ export class SessionsComponent implements OnInit {
     this.praxisService.getProfessors().then((res: [Professor]) => this.proffesors = res);
 
     if (this.role == "student") {
+      this.isProfessor=false;
+      this.isStudent=true;
       this.praxisService.getStudent(this.idUser).then((res: Student) => {
         if (res) {
           this.student = res; 
@@ -57,6 +61,8 @@ export class SessionsComponent implements OnInit {
       });
     }
     else {
+      this.isStudent=false;
+      this.isProfessor=true;
       this.praxisService.getProfessor(this.idUser).then((res: Professor) => {
         if (res) {
           this.proffesor = res;
